@@ -5,122 +5,109 @@ import projects from '../data/projects.json';
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Arslan Kurbanov — Visual Excellence</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Arslan Kurbanov — Visuals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-[#000] text-[#fff] font-['Inter',sans-serif] selection:bg-zinc-500 overflow-x-hidden">
+<body class="bg-[#000] text-[#fff] font-['Inter',sans-serif] selection:bg-zinc-800 overflow-x-hidden">
     
-    <!-- NAVIGATION 2026 -->
-    <nav class="fixed top-0 z-50 flex w-full justify-between p-8 mix-blend-difference items-center">
-        <span class="text-2xl font-black italic tracking-tighter uppercase leading-none">AK</span>
-        <div class="flex items-center gap-8 text-[9px] font-bold uppercase tracking-[0.4em]">
-            <a href="https://t.me/kkkrbnv" target="_blank" class="hover:opacity-40 transition-all">Telegram</a>
-            <a href="/special" class="bg-white/10 backdrop-blur-md border border-white/10 px-5 py-2 rounded-full hover:bg-white hover:text-black transition-all">Special</a>
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 z-50 flex w-full justify-between p-6 mix-blend-difference items-center">
+        <span class="text-xl font-black italic tracking-tighter uppercase">AK</span>
+        <div class="flex items-center gap-6 text-[9px] font-bold uppercase tracking-[0.3em]">
+            <a href="#contact" class="hover:opacity-40 transition-all border-b border-zinc-800 pb-1">Contact</a>
+            <a href="/special" class="bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-all">Special</a>
         </div>
     </nav>
 
-    <main class="px-6">
-        <!-- HERO SECTION 2026 -->
+    <main class="px-4 md:px-10">
+        <!-- HERO SECTION -->
         <section class="relative flex min-h-screen flex-col justify-center pt-20">
-            <span class="text-[16px] uppercase tracking-[0.5em] text-zinc-600 mb-4 ml-2">Visual Artist</span>
-            <h1 class="flex flex-col leading-[0.75] tracking-tighter uppercase italic">
-                <span class="text-[10vw] font-black text-zinc-100">Arslan</span>
-                
-                <!-- Video Masked Surname -->
-                <div class="relative group cursor-default">
-                    <span class="pearl-text text-[18vw] font-[700] leading-none block">Kurbanov</span>
-                    <!-- Видео, которое просвечивает сквозь текст -->
-                    <video 
-                        autoplay muted loop playsinline 
-                        class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-100 pointer-events-none group-hover:opacity-20 transition-opacity duration-1000"
-                        src="https://framerusercontent.com/assets/7pD9r7v8f.mp4">
-                    </video>
-                </div>
+            <h1 class="flex flex-col leading-[0.8] tracking-tighter uppercase italic">
+                <span class="text-[10vw] font-black text-zinc-400">Arslan</span>
+                <span class="pearl-text text-[14vw] font-[900] leading-none block">Kurbanov</span>
             </h1>
             
-            <div class="mt-20 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
-                <h2 class="max-w-2xl text-3xl md:text-5xl font-medium uppercase tracking-tighter leading-[0.9] text-zinc-300">
+            <div class="mt-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
+                <h2 class="max-w-xl text-2xl md:text-4xl font-medium uppercase tracking-tighter leading-[1.1] text-zinc-200">
                     Visual Creator <br/> <span class="text-zinc-800">/</span> Based in Earth
                 </h2>
                 
-                <div class="flex flex-wrap gap-3">
-                    <a href="https://www.instagram.com/kkkrbnv/" target="_blank" class="btn-2026">Instagram</a>
-                    <a href="https://t.me/kkkrbnv" target="_blank" class="btn-2026">Telegram</a>
-                    <a href="https://www.youtube.com/@kkkrbnv" target="_blank" class="btn-2026 bg-white !text-black">YouTube</a>
+                <!-- MOBILE READY BUTTONS (ONE ROW) -->
+                <div class="flex flex-row flex-nowrap w-full md:w-auto gap-2 md:gap-3">
+                    <a href="https://instagram.com/kkkrbnv" class="btn-2026 flex-1 text-center">IG</a>
+                    <a href="https://youtube.com/@kkkrbnv" class="btn-2026 flex-1 text-center bg-white !text-black">YT</a>
+                    <a href="https://t.me/kkkrbnv" class="btn-2026 flex-1 text-center">TG</a>
                 </div>
             </div>
         </section>
 
         <!-- CONTENT GRID -->
-        <section id="work" class="grid grid-cols-1 md:grid-cols-2 gap-4 py-32">
+        <section id="work" class="grid grid-cols-1 md:grid-cols-2 gap-6 py-20">
             {projects.map((p) => (
-                <a href={p.youtubeUrl} target="_blank" class="group relative aspect-video overflow-hidden rounded-[1rem] bg-zinc-950">
-                    <div class="absolute inset-0 z-20 flex flex-col justify-end p-8 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-700 backdrop-blur-[2px]">
-                        <span class="text-[9px] uppercase tracking-[0.5em] text-zinc-400 mb-2">{p.category}</span>
-                        <h3 class="text-3xl font-black uppercase italic tracking-tighter">{p.title}</h3>
+                <a href={p.youtubeUrl} target="_blank" class="group relative aspect-video overflow-hidden rounded-[1.5rem] bg-zinc-950 block">
+                    <!-- Заголовки теперь видны сразу -->
+                    <div class="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                        <span class="text-[8px] uppercase tracking-[0.4em] text-zinc-500 mb-2">{p.category}</span>
+                        <h3 class="text-xl md:text-3xl font-black uppercase italic tracking-tighter pearl-hover transition-all duration-500">{p.title}</h3>
                     </div>
                     <video 
                         src={p.previewVideo} 
-                        class="h-full w-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[1.5s] ease-out" 
-                        muted loop playsinline 
-                        onmouseover="this.play()" 
-                        onmouseout="this.pause(); this.currentTime = 0;">
-                    </video>
+                        class="h-full w-full object-cover opacity-40 group-hover:opacity-100 transition-all duration-1000" 
+                        muted loop playsinline autoplay
+                    ></video>
                 </a>
             ))}
+        </section>
+
+        <!-- CONTACT FORM -->
+        <section id="contact" class="py-32 border-t border-zinc-900">
+            <div class="max-w-2xl">
+                <h2 class="text-5xl font-black uppercase italic tracking-tighter mb-12">Get in touch</h2>
+                <form action="https://formspree.io/f/your-id" method="POST" class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="border-b border-zinc-800 py-4 focus-within:border-white transition-colors">
+                            <label class="text-[9px] uppercase tracking-widest text-zinc-600 block mb-2">Name</label>
+                            <input type="text" name="name" class="bg-transparent w-full outline-none text-xl font-light" placeholder="Arslan K." required />
+                        </div>
+                        <div class="border-b border-zinc-800 py-4 focus-within:border-white transition-colors">
+                            <label class="text-[9px] uppercase tracking-widest text-zinc-600 block mb-2">Email</label>
+                            <input type="email" name="email" class="bg-transparent w-full outline-none text-xl font-light" placeholder="your@email.com" required />
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full md:w-auto bg-white text-black px-12 py-5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] hover:bg-zinc-200 transition-all active:scale-95">
+                        Send Message
+                    </button>
+                </form>
+            </div>
         </section>
     </main>
 
     <style is:global>
         :root { color-scheme: dark; }
         html { scroll-behavior: smooth; background: #000; }
-        body { -webkit-font-smoothing: antialiased; }
-
-        /* Кнопки 2026 */
+        
         .btn-2026 {
-            @apply border border-zinc-800 px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest hover:border-white hover:bg-white hover:text-black transition-all duration-500;
+            @apply border border-zinc-800 px-4 md:px-8 py-4 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest hover:border-white transition-all;
         }
 
-        /* Эффект перламутра и видео-маски */
         .pearl-text {
-            background: linear-gradient(
-                45deg, 
-                #1a1a1a 10%, 
-                #555 30%, 
-                #fff 50%, 
-                #555 70%, 
-                #1a1a1a 90%
-            );
+            background: linear-gradient(to right, #333 20%, #888 40%, #fff 50%, #888 60%, #333 80%);
             background-size: 200% auto;
-            color: #000; /* Текст становится прозрачным для видео через mix-blend */
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shine 12s linear infinite;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));
-            opacity: 0.5;
-            transition: opacity 1s ease;
+            animation: shine 10s linear infinite;
         }
 
-        .pearl-text:hover {
-            opacity: 1;
-            background-size: 100% auto;
+        /* Эффект перламутра на заголовках проектов при наведении на карточку */
+        .group:hover .pearl-hover {
+            background: linear-gradient(45deg, #fff, #555, #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 2s linear infinite;
         }
 
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        /* Плавное появление контента */
-        section {
-            animation: reveal 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-        }
-
-        @keyframes reveal {
-            from { opacity: 0; transform: translateY(20px); filter: blur(10px); }
-            to { opacity: 1; transform: translateY(0); filter: blur(0); }
-        }
-
+        @keyframes shine { to { background-position: 200% center; } }
         ::-webkit-scrollbar { display: none; }
     </style>
 </body>
