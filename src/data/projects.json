@@ -1,16 +1,14 @@
 [
   {
     "title": "SHOWREEL",
-    "category": "Director Cut",
-    "type": "showreel",
+    "category": "Visuals",
     "previewVideo": "https://framerusercontent.com/assets/7pD9r7v8f.mp4",
-    "link": "https://www.youtube.com/@kkkrbnv"
+    "youtubeUrl": "https://www.youtube.com/@kkkrbnv"
   },
   {
-    "title": "PHOTOGRAPHY",
-    "category": "Photoshoot",
-    "type": "photo",
-    "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000",
-    "link": "https://www.instagram.com/kkkrbnv/"
-  },
-  
+    "title": "CREATIVE EDIT",
+    "category": "Commercial",
+    "previewVideo": "https://framerusercontent.com/assets/7pD9r7v8f.mp4",
+    "youtubeUrl": "https://www.youtube.com/@kkkrbnv"
+  }
+]
