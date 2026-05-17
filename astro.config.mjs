@@ -1,3 +1,8 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-export default defineConfig({ integrations: [tailwind()] });
+import sitemap from '@astrojs/sitemap';
+
+export default defineConfig({
+  site: 'https://arslankurbanov.com',
+  integrations: [tailwind(), sitemap()],
+});
