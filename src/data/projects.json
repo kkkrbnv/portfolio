@@ -1,14 +1,25 @@
 [
   {
-    "title": "SHOWREEL",
-    "category": "Visuals",
-    "previewVideo": "https://framerusercontent.com/assets/7pD9r7v8f.mp4",
-    "youtubeUrl": "https://www.youtube.com/@kkkrbnv"
+    "title": "SHOWREEL 2026",
+    "category": "VISUALS",
+    "type": "video",
+    "youtubeId": "dQw4w9WgXcQ",
+    "hoverVideo": "/videos/showreel_preview.mp4",
+    "isFeatured": true
   },
   {
     "title": "CREATIVE EDIT",
-    "category": "Commercial",
-    "previewVideo": "https://framerusercontent.com/assets/7pD9r7v8f.mp4",
-    "youtubeUrl": "https://www.youtube.com/@kkkrbnv"
+    "category": "COMMERCIAL",
+    "type": "video",
+    "youtubeId": "yPYZpwSpKmA",
+    "hoverVideo": "/videos/edit_preview.mp4",
+    "isFeatured": false
+  },
+  {
+    "title": "URBAN EXPLORATION",
+    "category": "STILLS",
+    "type": "photo",
+    "previewImage": "/photo1.jpg",
+    "url": "https://instagram.com/kkkrbnv"
   }
 ]
