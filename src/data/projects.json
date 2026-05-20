@@ -9,8 +9,8 @@
   {
     "title": "CREATIVE EDIT",
     "category": "COMMERCIAL",
-    "type": "photo",
-    "previewImage": "/photo1.jpg",
-    "instagramUrl": "https://instagram.com/kkkrbnv"
+    "type": "video",
+    "previewVideo": "/videos/creative.mp4",
+    "youtubeUrl": "https://youtube.com/..."
   }
 ]
