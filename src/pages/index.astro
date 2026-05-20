@@ -5,20 +5,34 @@ import projects from '../data/projects.json';
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Arslan Kurbanov — Visuals</title>
+    
+    <!-- SEO / ЗАГОЛОВОК -->
+    <title>Arslan Kurbanov — Visual Content Creator & Director</title>
+    <meta name="description" content="Official portfolio of Arslan Kurbanov. High-end visual content creation, cinematography, and digital storytelling based in Earth. Arslan Kurbanov video, арслан курбанов видео, курбанов видео, kurbanov video, режиссер Арслан курбанов. Watch showreel and latest works." />
+    <meta name="keywords" content="Arslan Kurbanov, Арслан Курбанов, Visual Creator, Cinematographer, Video Production, Portfolio, Director" />
+    <meta name="author" content="Arslan Kurbanov" />
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <!-- SOCIAL MEDIA (OG TAGS) -->
+    <meta property="og:title" content="Arslan Kurbanov — Visual Artist" />
+    <meta property="og:description" content="Visual content for the next generation. High-end cinematography and digital storytelling." />
+    <meta property="og:image" content="https://arslankurbanov.com/og-image.jpg" />
+    <meta property="og:url" content="https://arslankurbanov.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
 </head>
-<link rel="icon" type="image/png" href="/favicon.png" />
 
-<meta property="og:image" content="https://arslankurbanov.com/og-image.jpg" />
-<meta property="og:title" content="Arslan Kurbanov — Visual Artist & Content Creator" />
-<meta property="og:description" content="Official portfolio of Arslan Kurbanov. High-end visual storytelling, video production and photography." />
-<meta property="og:url" content="https://arslankurbanov.com/" />
-<meta property="og:type" content="website" />
 <body class="bg-[#000] text-[#fff] font-['Inter',sans-serif] selection:bg-zinc-800 overflow-x-hidden">
     
     <!-- NAVIGATION -->
-    <nav class="fixed top-0 z-50 flex w-full justify-between p-6 mix-blend-difference items-center">
+    <nav class="fixed top-0 z-50 flex w-full justify-between p-6 md:p-10 mix-blend-difference items-center">
         <span class="text-xl font-black italic tracking-tighter uppercase">AK</span>
         <div class="flex items-center gap-6 text-[9px] font-bold uppercase tracking-[0.3em]">
             <a href="#contact" class="hover:opacity-40 transition-all border-b border-zinc-800 pb-1">Contact</a>
@@ -39,11 +53,11 @@ import projects from '../data/projects.json';
                     Visual Creator <br/> <span class="text-zinc-800">/</span> Based on Earth
                 </h2>
                 
-                <!-- MOBILE READY BUTTONS (ONE ROW) -->
+                <!-- MOBILE READY BUTTONS -->
                 <div class="flex flex-row flex-nowrap w-full md:w-auto gap-2 md:gap-3">
-                    <a href="https://instagram.com/kkkrbnv" class="btn-2026 flex-1 text-center">Instagram</a>
-                    <a href="https://youtube.com/@kkkrbnv" class="btn-2026 flex-1 text-center bg-white !text-black">YouTube</a>
-                    <a href="https://t.me/kkkrbnv" class="btn-2026 flex-1 text-center">Telegram</a>
+                    <a href="https://instagram.com/kkkrbnv" target="_blank" class="btn-2026 flex-1 text-center">Instagram</a>
+                    <a href="https://youtube.com/@kkkrbnv" target="_blank" class="btn-2026 flex-1 text-center bg-white !text-black">YouTube</a>
+                    <a href="https://t.me/kkkrbnv" target="_blank" class="btn-2026 flex-1 text-center">Telegram</a>
                 </div>
             </div>
         </section>
@@ -52,7 +66,6 @@ import projects from '../data/projects.json';
         <section id="work" class="grid grid-cols-1 md:grid-cols-2 gap-6 py-20">
             {projects.map((p) => (
                 <a href={p.youtubeUrl} target="_blank" class="group relative aspect-video overflow-hidden rounded-[1.5rem] bg-zinc-950 block">
-                    <!-- Заголовки теперь видны сразу -->
                     <div class="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
                         <span class="text-[8px] uppercase tracking-[0.4em] text-zinc-500 mb-2">{p.category}</span>
                         <h3 class="text-xl md:text-3xl font-black uppercase italic tracking-tighter pearl-hover transition-all duration-500">{p.title}</h3>
@@ -89,6 +102,10 @@ import projects from '../data/projects.json';
         </section>
     </main>
 
+    <footer class="p-12 text-[9px] text-zinc-800 uppercase tracking-[0.5em] text-center border-t border-zinc-900/50 italic">
+        Arslan Kurbanov © 2024 — Visual Artist
+    </footer>
+
     <style is:global>
         :root { color-scheme: dark; }
         html { scroll-behavior: smooth; background: #000; }
@@ -105,9 +122,8 @@ import projects from '../data/projects.json';
             animation: shine 10s linear infinite;
         }
 
-        /* Эффект перламутра на заголовках проектов при наведении на карточку */
         .group:hover .pearl-hover {
-            background: linear-gradient(45deg, #fff, #555, #fff);
+            background: linear-gradient(45deg, #fff, #666, #fff);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -119,23 +135,3 @@ import projects from '../data/projects.json';
     </style>
 </body>
 </html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-    <!-- Основной заголовок для поиска -->
-    <title>Arslan Kurbanov — Visual Content Creator & Director</title>
-    
-    <!-- Описание сайта (то, что люди видят под ссылкой в Google) -->
-    <meta name="description" content="Official portfolio of Arslan Kurbanov. High-end visual content creation, cinematography, and digital storytelling based in Earth. Arslan Kurbanov video, арслан курбанов видео, курбанов видео, kurbanov video, режиссер Арслан курбанов, Watch showreel and latest works." />
-    
-    <!-- Ключевые слова -->
-    <meta name="keywords" content="Arslan Kurbanov, Арслан Курбанов, Visual Creator, Cinematographer, Video Production, Portfolio, Director" />
-    
-    <!-- Теги для соцсетей (чтобы красиво отображалось в Telegram/Instagram при отправке ссылки) -->
-    <meta property="og:title" content="Arslan Kurbanov — Visual Artist" />
-    <meta property="og:description" content="Visual content for the next generation." />
-    <meta property="og:image" content="/og-image.jpg" /> <!-- Закинь красивое фото в папку public под этим именем -->
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
-</head>
