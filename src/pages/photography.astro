@@ -11,25 +11,22 @@ import photos from '../data/photos.json';
 <body class="bg-black text-white font-['Inter',sans-serif] overflow-hidden">
     
     <nav class="fixed top-0 z-50 flex w-full justify-between p-8 mix-blend-difference items-center">
-        <a href="/" class="text-[10px] uppercase tracking-[0.4em] font-black border border-white/10 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all">← Back</a>
-        <span class="text-xl font-black italic tracking-tighter uppercase leading-none italic">Arslan Kurbanov Stills</span>
+        <a href="/" class="text-[10px] uppercase tracking-[0.4em] font-black border border-white/10 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all uppercase">← Back</a>
+        <span class="text-xl font-black italic tracking-tighter uppercase leading-none italic">AK Stills</span>
     </nav>
 
-    <!-- HORIZONTAL GALLERY -->
     <main class="flex h-screen items-center overflow-x-auto overflow-y-hidden px-20 gap-12 snap-x snap-mandatory scroll-smooth">
         {photos.map((photo) => (
             <div class="flex-none h-[70vh] snap-center cursor-zoom-in group relative" onclick={`openModal('${photo.src}', '${photo.description}')`}>
                 <img src={photo.src} class="h-full w-auto object-cover rounded-xl transition-all duration-700 group-hover:scale-[1.02]" loading="lazy" />
-                <p class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all text-[8px] tracking-[0.5em] uppercase bg-black/40 px-2 py-1 rounded">Open</p>
+                <p class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all text-[8px] tracking-[0.5em] uppercase bg-black/40 px-2 py-1 rounded">Expand</p>
             </div>
         ))}
     </main>
 
-    <!-- MODAL (80% Size) -->
     <div id="modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl hidden flex-col items-center justify-center p-6 cursor-zoom-out" onclick="closeModal()">
         <img id="modal-img" src="" class="max-h-[80vh] max-w-[85vw] object-contain rounded-lg shadow-2xl transition-all duration-500 scale-95" />
         <p id="modal-desc" class="mt-8 text-[10px] uppercase tracking-[0.4em] text-zinc-400 text-center max-w-2xl leading-relaxed italic"></p>
-        <span class="absolute top-10 right-10 text-[10px] opacity-30 font-bold uppercase tracking-widest">Esc to close</span>
     </div>
 
     <script is:inline>
