@@ -1,0 +1,55 @@
+---
+import photos from '../data/photos.json';
+---
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Photography | Arslan Kurbanov</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white font-['Inter',sans-serif] overflow-hidden">
+    
+    <!-- Навигация -->
+    <nav class="fixed top-0 z-50 flex w-full justify-between p-8 mix-blend-difference items-center">
+        <a href="/" class="text-[10px] uppercase tracking-[0.4em] font-black border border-white/10 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all">← Back</a>
+        <span class="text-xl font-black italic tracking-tighter uppercase leading-none italic">Arslan Kurbanov</span>
+    </nav>
+
+    <!-- Горизонтальная лента -->
+    <main class="flex h-screen items-center overflow-x-auto overflow-y-hidden px-20 gap-10 snap-x snap-mandatory scroll-smooth">
+        {photos.map((photo) => (
+            <div class="flex-none h-[60vh] snap-center cursor-pointer group relative" onclick={`openModal('${photo.src}', '${photo.description}')`}>
+                <img src={photo.src} class="h-full w-auto object-cover rounded-xl transition-all duration-700 group-hover:scale-[1.02]" />
+                <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity uppercase text-[8px] tracking-[0.3em] bg-black/50 px-3 py-1 rounded-full backdrop-blur">Click to expand</div>
+            </div>
+        ))}
+    </main>
+
+    <!-- Модальное окно (Lightbox) -->
+    <div id="modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl hidden flex-col items-center justify-center p-10 cursor-zoom-out" onclick="closeModal()">
+        <img id="modal-img" src="" class="max-h-[80vh] max-w-[80vw] object-contain rounded-lg shadow-2xl transition-transform duration-500" />
+        <p id="modal-desc" class="mt-8 text-sm uppercase tracking-[0.4em] text-zinc-400 text-center max-w-xl"></p>
+    </div>
+
+    <script is:inline>
+        function openModal(src, desc) {
+            document.getElementById('modal-img').src = src;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal').classList.remove('hidden');
+            document.getElementById('modal').classList.add('flex');
+        }
+        function closeModal() {
+            document.getElementById('modal').classList.remove('flex');
+            document.getElementById('modal').classList.add('hidden');
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        main { scrollbar-width: thin; scrollbar-color: #333 transparent; }
+    </style>
+</body>
+</html>
