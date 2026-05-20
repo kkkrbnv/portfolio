@@ -1,30 +1,47 @@
 ---
 import projects from '../data/projects.json';
-const videos = projects.filter(p => p.type === 'video');
-const photos = projects.filter(p => p.type === 'photo');
 ---
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Arslan Kurbanov — Visuals</title>
-    <meta name="description" content="Official portfolio of Arslan Kurbanov. High-end visual storytelling." />
+    
+    <!-- SEO / ЗАГОЛОВОК -->
+    <title>Arslan Kurbanov — Visual Content Creator & Director</title>
+    <meta name="description" content="Official portfolio of Arslan Kurbanov. High-end visual content creation, cinematography, and digital storytelling based in Earth. Arslan Kurbanov video, арслан курбанов видео, курбанов видео, kurbanov video, режиссер Арслан курбанов. Watch showreel and latest works." />
+    <meta name="keywords" content="Arslan Kurbanov, Арслан Курбанов, Visual Creator, Cinematographer, Video Production, Portfolio, Director" />
+    <meta name="author" content="Arslan Kurbanov" />
+
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <!-- SOCIAL MEDIA (OG TAGS) -->
+    <meta property="og:title" content="Arslan Kurbanov — Visual Artist" />
+    <meta property="og:description" content="Visual content for the next generation. High-end cinematography and digital storytelling." />
+    <meta property="og:image" content="https://arslankurbanov.com/og-image.jpg" />
+    <meta property="og:url" content="https://arslankurbanov.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
 </head>
+
 <body class="bg-[#000] text-[#fff] font-['Inter',sans-serif] selection:bg-zinc-800 overflow-x-hidden">
     
     <!-- NAVIGATION -->
     <nav class="fixed top-0 z-50 flex w-full justify-between p-6 md:p-10 mix-blend-difference items-center">
-        <span class="text-xl font-black italic tracking-tighter uppercase leading-none">AK</span>
+        <span class="text-xl font-black italic tracking-tighter uppercase">AK</span>
         <div class="flex items-center gap-6 text-[9px] font-bold uppercase tracking-[0.3em]">
             <a href="#contact" class="hover:opacity-40 transition-all border-b border-zinc-800 pb-1">Contact</a>
-            <a href="/special" class="bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-all uppercase text-[8px] font-black">Special</a>
+            <a href="/special" class="bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-all">Special</a>
         </div>
     </nav>
 
     <main class="px-4 md:px-10">
-        <!-- HERO SECTION (OLD DESIGN RESTORED) -->
+        <!-- HERO SECTION -->
         <section class="relative flex min-h-screen flex-col justify-center pt-20">
             <h1 class="flex flex-col leading-[0.8] tracking-tighter uppercase italic">
                 <span class="text-[10vw] font-black text-zinc-400">Arslan</span>
@@ -33,57 +50,39 @@ const photos = projects.filter(p => p.type === 'photo');
             
             <div class="mt-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
                 <h2 class="max-w-xl text-2xl md:text-4xl font-medium uppercase tracking-tighter leading-[1.1] text-zinc-200">
-                    Visual Creator <br/> <span class="text-zinc-800">/</span> Based in Earth
+                    Visual Creator <br/> <span class="text-zinc-800">/</span> Based on Earth
                 </h2>
                 
-                <!-- 3 BUTTONS IN ONE ROW ON MOBILE -->
-                <div class="grid grid-cols-3 w-full md:w-auto gap-2 md:gap-3">
-                    <a href="https://instagram.com/kkkrbnv" target="_blank" class="btn-2026 flex-1 text-center text-[8px] px-2">Instagram</a>
-                    <a href="https://youtube.com/@kkkrbnv" target="_blank" class="btn-2026 flex-1 text-center text-[8px] px-2 bg-white !text-black">YouTube</a>
-                    <a href="https://t.me/kkkrbnv" target="_blank" class="btn-2026 flex-1 text-center text-[8px] px-2">Telegram</a>
+                <!-- MOBILE READY BUTTONS -->
+                <div class="flex flex-row flex-nowrap w-full md:w-auto gap-2 md:gap-3">
+                    <a href="https://instagram.com/kkkrbnv" target="_blank" class="btn-2026 flex-1 text-center">Instagram</a>
+                    <a href="https://youtube.com/@kkkrbnv" target="_blank" class="btn-2026 flex-1 text-center bg-white !text-black">YouTube</a>
+                    <a href="https://t.me/kkkrbnv" target="_blank" class="btn-2026 flex-1 text-center">Telegram</a>
                 </div>
             </div>
         </section>
 
-        <!-- VIDEO SECTION -->
-        <section id="work" class="py-20 border-t border-zinc-900">
-            <h3 class="text-[10px] uppercase tracking-[0.5em] text-zinc-600 mb-10 font-bold italic">Selected Motion</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                {videos.map((p) => (
-                    <a href={p.youtubeUrl} target="_blank" class="group relative aspect-video overflow-hidden rounded-[1.5rem] bg-zinc-950 block border border-zinc-900">
-                        <div class="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-10 bg-gradient-to-t from-black/80 via-transparent to-transparent transition-all duration-700 group-hover:bg-black/10">
-                            <span class="text-[8px] uppercase tracking-[0.4em] text-zinc-400 mb-2">{p.category}</span>
-                            <h3 class="text-xl md:text-3xl font-black uppercase italic tracking-tighter pearl-hover transition-all duration-500">{p.title}</h3>
-                        </div>
-                        <video 
-                            src={p.previewVideo} 
-                            class="h-full w-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000" 
-                            muted loop playsinline autoplay
-                        ></video>
-                    </a>
-                ))}
-            </div>
+        <!-- CONTENT GRID -->
+        <section id="work" class="grid grid-cols-1 md:grid-cols-2 gap-6 py-20">
+            {projects.map((p) => (
+                <a href={p.youtubeUrl} target="_blank" class="group relative aspect-video overflow-hidden rounded-[1.5rem] bg-zinc-950 block">
+                    <div class="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                        <span class="text-[8px] uppercase tracking-[0.4em] text-zinc-500 mb-2">{p.category}</span>
+                        <h3 class="text-xl md:text-3xl font-black uppercase italic tracking-tighter pearl-hover transition-all duration-500">{p.title}</h3>
+                    </div>
+                    <video 
+                        src={p.previewVideo} 
+                        class="h-full w-full object-cover opacity-40 group-hover:opacity-100 transition-all duration-1000" 
+                        muted loop playsinline autoplay
+                    ></video>
+                </a>
+            ))}
         </section>
 
-        <!-- NEW PHOTO BLOCK -->
-        <section class="py-20 border-t border-zinc-900">
-            <h3 class="text-[10px] uppercase tracking-[0.5em] text-zinc-600 mb-10 font-bold italic">Photography</h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                {photos.map((p) => (
-                    <a href={p.instagramUrl} target="_blank" class="group relative aspect-[4/5] overflow-hidden rounded-[1rem] bg-zinc-950 block border border-zinc-900">
-                        <div class="absolute inset-0 z-20 flex items-center justify-center bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm">
-                             <h3 class="text-[10px] font-black uppercase italic tracking-[0.4em] pearl-hover">{p.title}</h3>
-                        </div>
-                        <img src={p.previewImage} class="h-full w-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[1.2s]" />
-                    </a>
-                ))}
-            </div>
-        </section>
-
-        <!-- CONTACT -->
+        <!-- CONTACT FORM -->
         <section id="contact" class="py-32 border-t border-zinc-900">
             <div class="max-w-2xl">
-                <h2 class="text-5xl font-black uppercase italic tracking-tighter mb-12 italic">Get in touch</h2>
+                <h2 class="text-5xl font-black uppercase italic tracking-tighter mb-12">Get in touch</h2>
                 <form action="https://formspree.io/f/xnjradqk" method="POST" class="space-y-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="border-b border-zinc-800 py-4 focus-within:border-white transition-colors">
@@ -103,7 +102,7 @@ const photos = projects.filter(p => p.type === 'photo');
         </section>
     </main>
 
-    <footer class="p-12 text-[8px] text-zinc-800 uppercase tracking-[0.5em] text-center italic border-t border-zinc-900/50">
+    <footer class="p-12 text-[9px] text-zinc-800 uppercase tracking-[0.5em] text-center border-t border-zinc-900/50 italic">
         Arslan Kurbanov © 2024 — Visual Artist
     </footer>
 
@@ -112,7 +111,7 @@ const photos = projects.filter(p => p.type === 'photo');
         html { scroll-behavior: smooth; background: #000; }
         
         .btn-2026 {
-            @apply border border-zinc-800 py-4 rounded-full font-bold uppercase tracking-widest hover:border-white transition-all;
+            @apply border border-zinc-800 px-4 md:px-8 py-4 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest hover:border-white transition-all;
         }
 
         .pearl-text {
