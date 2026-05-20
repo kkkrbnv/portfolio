@@ -2,15 +2,13 @@
   {
     "title": "SHOWREEL",
     "category": "VISUALS",
-    "type": "video",
     "previewVideo": "/videos/showreel.mp4",
-    "youtubeUrl": "https://youtube.com/..."
+    "youtubeUrl": "https://www.youtube.com/@kkkrbnv"
   },
   {
     "title": "CREATIVE EDIT",
     "category": "COMMERCIAL",
-    "type": "video",
     "previewVideo": "/videos/creative.mp4",
-    "youtubeUrl": "https://youtube.com/..."
+    "youtubeUrl": "https://www.youtube.com/@kkkrbnv"
   }
 ]
