@@ -1,25 +1,16 @@
 [
   {
-    "title": "SHOWREEL 2026",
-    "category": "VISUALS",
+    "title": "SHOWREEL",
+    "category": "DIRECTOR'S CUT",
     "type": "video",
-    "youtubeId": "dQw4w9WgXcQ",
-    "hoverVideo": "/videos/showreel_preview.mp4",
-    "isFeatured": true
+    "previewVideo": "/videos/showreel.mp4",
+    "youtubeUrl": "https://youtube.com/..."
   },
   {
-    "title": "CREATIVE EDIT",
-    "category": "COMMERCIAL",
-    "type": "video",
-    "youtubeId": "yPYZpwSpKmA",
-    "hoverVideo": "/videos/edit_preview.mp4",
-    "isFeatured": false
-  },
-  {
-    "title": "URBAN EXPLORATION",
+    "title": "STREET VIBE",
     "category": "STILLS",
     "type": "photo",
     "previewImage": "/photo1.jpg",
-    "url": "https://instagram.com/kkkrbnv"
+    "instagramUrl": "https://instagram.com/kkkrbnv"
   }
 ]
