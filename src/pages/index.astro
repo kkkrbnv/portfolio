@@ -33,7 +33,7 @@ import projects from '../data/projects.json';
             </h1>
             <div class="mt-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
                 <h2 class="max-w-xl text-2xl md:text-4xl font-medium uppercase tracking-tighter leading-[1.1] text-zinc-200">
-                    Visual Creator <br/> <span class="text-zinc-800">/</span> Based on Earth
+                    Visual Creator <br/> <span class="text-zinc-800">/</span> Based in Earth
                 </h2>
                 <div class="grid grid-cols-3 w-full md:w-auto gap-2">
                     <a href="https://instagram.com/kkkrbnv" target="_blank" class="btn-2026">Instagram</a>
@@ -43,15 +43,18 @@ import projects from '../data/projects.json';
             </div>
         </section>
 
-        <!-- VIDEO GRID -->
+        <!-- VIDEO GRID (Showreel & Creative Edit) -->
         <section id="work" class="grid grid-cols-1 md:grid-cols-2 gap-6 py-20 border-t border-zinc-900">
             {projects.map((p) => (
-                <a href={p.youtubeUrl} target="_blank" class="group relative aspect-video overflow-hidden rounded-[1.5rem] bg-zinc-950 block border border-zinc-900">
+                <a 
+                    href={p.title === "CREATIVE EDIT" ? "/creative-edits" : p.youtubeUrl} 
+                    target={p.title === "CREATIVE EDIT" ? "_self" : "_blank"}
+                    class="group relative aspect-video overflow-hidden rounded-[1.5rem] bg-zinc-950 block border border-zinc-900"
+                >
                     <div class="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-10 bg-gradient-to-t from-black/80 via-transparent transition-all duration-700 group-hover:bg-black/10">
                         <span class="text-[8px] uppercase tracking-[0.4em] text-zinc-400 mb-2">{p.category}</span>
                         <h3 class="text-xl md:text-3xl font-black uppercase italic tracking-tighter pearl-hover transition-all duration-500">{p.title}</h3>
                     </div>
-                    <!-- Здесь должен быть путь к MP4 файлу -->
                     <video 
                         src={p.previewVideo} 
                         class="h-full w-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000" 
@@ -65,7 +68,7 @@ import projects from '../data/projects.json';
         <section class="py-10 flex justify-center px-4">
             <a href="/photography" class="group relative w-full max-w-4xl aspect-[3/1.5] overflow-hidden rounded-[2rem] bg-zinc-900 block border border-zinc-900 shadow-2xl">
                 <div class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/60 group-hover:bg-black/30 transition-all duration-700 backdrop-blur-[2px] group-hover:backdrop-blur-none text-center p-4">
-                    <span class="text-[8px] md:text-[10px] uppercase tracking-[0.6em] text-zinc-500 mb-2">Exclusive Stills</span>
+                    <span class="text-[8px] md:text-[10px] uppercase tracking-[0.6em] text-zinc-500 mb-2 text-zinc-400">Exclusive Stills</span>
                     <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter pearl-hover italic">Photography</h2>
                 </div>
                 <img src="/photo1.jpg" class="h-full w-full object-cover opacity-40 transition-all duration-1000 group-hover:scale-110" />
@@ -75,7 +78,7 @@ import projects from '../data/projects.json';
         <!-- CONTACT -->
         <section id="contact" class="py-32 border-t border-zinc-900">
             <div class="max-w-2xl">
-                <h2 class="text-5xl font-black uppercase italic tracking-tighter mb-12 italic">Get in touch</h2>
+                <h2 class="text-5xl font-black uppercase italic tracking-tighter mb-12 italic italic">Get in touch</h2>
                 <form action="https://formspree.io/f/xnjradqk" method="POST" class="space-y-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <input type="text" name="name" class="bg-transparent border-b border-zinc-800 py-4 outline-none text-xl focus:border-white transition-colors placeholder-zinc-700" placeholder="Name" required />
