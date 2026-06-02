@@ -1,0 +1,74 @@
+---
+import edits from '../data/edits.json';
+---
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creative Edits — Arslan Kurbanov</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white font-['Inter',sans-serif] selection:bg-zinc-800">
+    
+    <nav class="fixed top-0 z-50 flex w-full justify-between p-8 mix-blend-difference items-center text-white">
+        <a href="/" class="text-[10px] uppercase tracking-[0.4em] font-black border border-white/20 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all">← Back</a>
+        <span class="text-xl font-black italic tracking-tighter uppercase leading-none italic">Edits Library</span>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-32 pb-40">
+        <h1 class="text-[10vw] font-black uppercase italic tracking-tighter mb-20 pearl-text italic">Creative Edits</h1>
+
+        <div class="space-y-32">
+            {edits.map((edit) => (
+                <div class="group cursor-pointer" onclick={`openEditModal('${edit.youtubeId}', '${edit.title}', '${edit.description}')`}>
+                    <div class="relative aspect-video overflow-hidden rounded-[2rem] bg-zinc-950 border border-zinc-900 shadow-2xl">
+                        <div class="absolute inset-0 z-10 flex flex-col justify-end p-8 md:p-16 bg-gradient-to-t from-black/80 via-transparent">
+                            <span class="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-4">{edit.category}</span>
+                            <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter pearl-hover italic">{edit.title}</h2>
+                        </div>
+                        <video src={edit.previewVideo} class="h-full w-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[1.5s]" muted loop autoplay playsinline></video>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </main>
+
+    <!-- MODAL -->
+    <div id="video-modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl hidden flex-col items-center justify-center p-6" onclick="closeEditModal()">
+        <div class="relative w-full max-w-[80vw] aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+            <iframe id="modal-iframe" class="w-full h-full" src="" frameborder="0" allow="autoplay; fullscreen"></iframe>
+        </div>
+        <div class="mt-8 text-center max-w-2xl" onclick="event.stopPropagation()">
+            <h2 id="modal-title" class="text-3xl font-black uppercase italic tracking-tighter mb-4 italic"></h2>
+            <p id="modal-desc" class="text-[10px] uppercase tracking-[0.3em] text-zinc-500 leading-relaxed"></p>
+        </div>
+    </div>
+
+    <script is:inline>
+        function openEditModal(id, title, desc) {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('modal-iframe');
+            iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        function closeEditModal() {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('modal-iframe');
+            iframe.src = "";
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+        document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeEditModal(); });
+    </script>
+
+    <style is:global>
+        .pearl-text { background: linear-gradient(to right, #444 20%, #888 40%, #fff 50%, #888 60%, #444 80%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 12s linear infinite; }
+        .pearl-hover { background: linear-gradient(45deg, #fff, #666, #fff); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s linear infinite; }
+        @keyframes shine { to { background-position: 200% center; } }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</body>
+</html>
