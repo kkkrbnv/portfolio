@@ -1,14 +1,17 @@
 [
   {
-    "src": "/photography/Photo1.jpg",
-    "description": "Surfer. Shot on 35mm."
+    "seriesTitle": "OCEAN VIBES",
+    "location": "35mm Archive",
+    "photos": [
+      { "src": "/photography/Photo1.jpg", "description": "Surfer. Shot on 35mm." }
+    ]
   },
   {
-    "src": "/photography/bali1.jpg",
-    "description": "Uluwatu cliff."
-  },
-  {
-    "src": "/photography/bali2.jpg",
-    "description": "Bali Waterfall."
+    "seriesTitle": "BALI SPIRIT",
+    "location": "Indonesia",
+    "photos": [
+      { "src": "/photography/bali1.jpg", "description": "Uluwatu cliff." },
+      { "src": "/photography/bali2.jpg", "description": "Bali Waterfall." }
+    ]
   }
 ]
