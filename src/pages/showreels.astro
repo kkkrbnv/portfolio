@@ -1,0 +1,88 @@
+---
+import showreels from '../data/showreels.json';
+---
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Showreels — Arslan Kurbanov</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white font-['Inter',sans-serif] selection:bg-zinc-800">
+    
+    <nav class="fixed top-0 z-50 flex w-full justify-between p-8 mix-blend-difference items-center text-white">
+        <a href="/" class="text-[10px] uppercase tracking-[0.4em] font-black border border-white/20 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all">← Back</a>
+        <span class="text-xl font-black italic tracking-tighter uppercase leading-none italic">Showreels</span>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-40">
+        <h1 class="text-[clamp(3rem,10vw,10rem)] font-black uppercase italic tracking-tighter mb-20 pearl-text italic pr-10 overflow-visible leading-[0.8]">
+            Selected <br/> Showreels
+        </h1>
+
+        <!-- VERTICAL PROJECTS LIST -->
+        <div class="flex flex-col gap-40 md:gap-60">
+            {showreels.map((reel) => (
+                <div class="group cursor-pointer relative" onclick={`openReelModal('${reel.youtubeId}', '${reel.title}', '${reel.description}')`}>
+                    <!-- Заголовок над видео -->
+                    <div class="flex justify-between items-end mb-6 pr-4">
+                        <div class="overflow-visible">
+                            <span class="text-[9px] uppercase tracking-[0.5em] text-zinc-500 block mb-2">{reel.category}</span>
+                            <h2 class="text-[clamp(2rem,6vw,6rem)] font-black uppercase italic tracking-tighter pearl-hover leading-none">{reel.title}</h2>
+                        </div>
+                        <span class="text-[8px] uppercase tracking-widest text-zinc-700 hidden md:block">Scroll to explore</span>
+                    </div>
+
+                    <!-- Большое Видео -->
+                    <div class="relative w-full aspect-video md:aspect-[21/9] overflow-hidden rounded-[2.5rem] bg-zinc-950 border border-zinc-900 shadow-2xl transition-transform duration-700 group-hover:scale-[1.01]">
+                        <div class="absolute inset-0 z-10 flex items-center justify-center bg-black/40 group-hover:bg-transparent transition-all duration-700">
+                             <div class="border border-white/20 px-8 py-3 rounded-full backdrop-blur-md text-[10px] uppercase tracking-[0.4em] opacity-0 group-hover:opacity-100 transition-all">View Project</div>
+                        </div>
+                        <video src={reel.previewVideo} class="h-full w-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-1000" muted loop autoplay playsinline></video>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </main>
+
+    <!-- VIDEO MODAL -->
+    <div id="reel-modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl hidden flex-col items-center justify-center p-6" onclick="closeReelModal()">
+        <div class="relative w-full max-w-[85vw] aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+            <iframe id="reel-iframe" class="w-full h-full" src="" frameborder="0" allow="autoplay; fullscreen"></iframe>
+        </div>
+        <div class="mt-8 text-center max-w-2xl" onclick="event.stopPropagation()">
+            <h2 id="reel-title" class="text-3xl font-black uppercase italic tracking-tighter mb-4 italic"></h2>
+            <p id="reel-desc" class="text-[10px] uppercase tracking-[0.3em] text-zinc-500 leading-relaxed"></p>
+        </div>
+    </div>
+
+    <script is:inline>
+        function openReelModal(id, title, desc) {
+            const modal = document.getElementById('reel-modal');
+            const iframe = document.getElementById('reel-iframe');
+            iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+            document.getElementById('reel-title').innerText = title;
+            document.getElementById('reel-desc').innerText = desc;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeReelModal() {
+            const modal = document.getElementById('reel-modal');
+            const iframe = document.getElementById('reel-iframe');
+            iframe.src = "";
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeReelModal(); });
+    </script>
+
+    <style is:global>
+        .pearl-text { background: linear-gradient(to right, #444 20%, #888 40%, #fff 50%, #888 60%, #444 80%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 12s linear infinite; }
+        .pearl-hover { background: linear-gradient(45deg, #fff, #666, #fff); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s linear infinite; }
+        @keyframes shine { to { background-position: 200% center; } }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</body>
+</html>
