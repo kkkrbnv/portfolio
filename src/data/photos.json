@@ -1,10 +1,10 @@
 [
   {
-    "src": "/photo1.jpg",
-    "description": "Street vibe in the city. Shot on 35mm."
+    "src": "/photography/Photo1.jpg",
+    "description": "Surfer. Shot on 35mm."
   },
   {
-    "src": "/photo2.jpg",
-    "description": "Cinematic portrait session. Arslan Kurbanov visuals."
+    "src": "/photography/Tokyo 1.jpg",
+    "description": "Tokyo city panorama."
   }
 ]
