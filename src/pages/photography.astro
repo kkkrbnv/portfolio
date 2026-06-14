@@ -1,5 +1,5 @@
 ---
-import photos from '../data/photos.json';
+import seriesData from '../data/photos.json';
 ---
 <html lang="en">
 <head>
@@ -8,25 +8,56 @@ import photos from '../data/photos.json';
     <title>Photography | Arslan Kurbanov</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-black text-white font-['Inter',sans-serif] overflow-hidden">
+<body class="bg-[#050505] text-white font-['Inter',sans-serif] overflow-x-hidden selection:bg-white selection:text-black">
     
-    <nav class="fixed top-0 z-50 flex w-full justify-between p-8 mix-blend-difference items-center">
-        <a href="/" class="text-[10px] uppercase tracking-[0.4em] font-black border border-white/10 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all uppercase">← Back</a>
-        <span class="text-xl font-black italic tracking-tighter uppercase leading-none italic">ARSLAN KURBANOV</span>
+    <!-- Навигация -->
+    <nav class="fixed top-0 z-50 flex w-full justify-between p-6 md:p-10 mix-blend-difference items-center">
+        <a href="/" class="text-[10px] uppercase tracking-[0.4em] font-black border border-white/10 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all">← Back</a>
+        <span class="text-xl font-black italic tracking-tighter uppercase italic opacity-40">AK Photography</span>
     </nav>
 
-    <main class="flex h-screen items-center overflow-x-auto overflow-y-hidden px-20 gap-12 snap-x snap-mandatory scroll-smooth">
-        {photos.map((photo) => (
-            <div class="flex-none h-[70vh] snap-center cursor-zoom-in group relative" onclick={`openModal('${photo.src}', '${photo.description}')`}>
-                <img src={photo.src} class="h-full w-auto object-cover rounded-xl transition-all duration-700 group-hover:scale-[1.02]" loading="lazy" />
-                <p class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all text-[8px] tracking-[0.5em] uppercase bg-black/40 px-2 py-1 rounded">Expand</p>
+    <main class="w-full pt-40 pb-20">
+        {seriesData.map((series) => (
+            <div class="mb-40">
+                <!-- Название серии (слева) -->
+                <div class="px-6 md:px-20 mb-10 overflow-visible">
+                    <span class="text-[9px] uppercase tracking-[0.8em] text-zinc-600 block mb-2">{series.location}</span>
+                    <h2 class="text-[clamp(3rem,8vw,10rem)] font-black uppercase italic tracking-tighter pearl-text leading-none pr-10">
+                        {series.seriesTitle}{'\u00A0'}
+                    </h2>
+                </div>
+
+                <!-- Список фото в серии -->
+                <div class="flex flex-col items-center gap-20 md:gap-40">
+                    {series.photos.map((photo) => (
+                        <div 
+                            class="w-full max-w-6xl px-4 flex justify-center content-auto" 
+                            style="content-visibility: auto;"
+                        >
+                            <div class="relative group cursor-zoom-in" onclick={`openModal('${photo.src}', '${photo.description}')`}>
+                                <img 
+                                    src={photo.src} 
+                                    class="max-h-[90vh] md:max-h-[110vh] w-auto object-contain rounded-sm shadow-2xl transition-all duration-1000 group-hover:scale-[1.01]" 
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                {photo.description && (
+                                    <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/5">
+                                        <p class="text-[8px] uppercase tracking-widest text-zinc-300 font-medium">{photo.description}</p>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         ))}
     </main>
 
-    <div id="modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl hidden flex-col items-center justify-center p-6 cursor-zoom-out" onclick="closeModal()">
-        <img id="modal-img" src="" class="max-h-[80vh] max-w-[85vw] object-contain rounded-lg shadow-2xl transition-all duration-500 scale-95" />
-        <p id="modal-desc" class="mt-8 text-[10px] uppercase tracking-[0.4em] text-zinc-400 text-center max-w-2xl leading-relaxed italic"></p>
+    <!-- Увеличение (Modal) -->
+    <div id="modal" class="fixed inset-0 z-[100] bg-black/98 backdrop-blur-2xl hidden flex-col items-center justify-center p-4 cursor-zoom-out" onclick="closeModal()">
+        <img id="modal-img" src="" class="max-h-[85vh] max-w-[90vw] object-contain shadow-2xl transition-all duration-500 scale-95" />
+        <p id="modal-desc" class="mt-8 text-[10px] uppercase tracking-[0.4em] text-zinc-500 text-center max-w-xl italic pr-10 overflow-visible"></p>
     </div>
 
     <script is:inline>
@@ -34,9 +65,10 @@ import photos from '../data/photos.json';
             const modal = document.getElementById('modal');
             const img = document.getElementById('modal-img');
             img.src = src;
-            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-desc').innerText = desc + '\u00A0';
             modal.classList.remove('hidden');
             modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
             setTimeout(() => img.classList.remove('scale-95'), 10);
         }
         function closeModal() {
@@ -46,16 +78,23 @@ import photos from '../data/photos.json';
             setTimeout(() => {
                 modal.classList.remove('flex');
                 modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
             }, 300);
         }
         document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
     </script>
 
-    <style>
-        ::-webkit-scrollbar { height: 2px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #1a1a1a; }
-        main { scrollbar-width: thin; scrollbar-color: #1a1a1a transparent; }
+    <style is:global>
+        .pearl-text { background: linear-gradient(to right, #333 20%, #888 40%, #fff 50%, #888 60%, #333 80%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 12s linear infinite; display: inline-block; }
+        @keyframes shine { to { background-position: 200% center; } }
+        
+        /* Плавный скролл */
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        
+        /* Чтобы картинки не дергались при загрузке */
+        .content-auto { content-visibility: auto; contain-intrinsic-size: 1px 1000px; }
     </style>
 </body>
 </html>
