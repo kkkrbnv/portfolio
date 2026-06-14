@@ -17,8 +17,8 @@ import edits from '../data/edits.json';
     </nav>
 
     <main class="max-w-6xl mx-auto px-6 pt-32 pb-40">
-        <!-- Заголовок с фиксом для Windows -->
-        <h1 class="text-[clamp(2.5rem,8vw,8rem)] font-black uppercase italic tracking-[-0.05em] mb-20 pearl-text pr-10 overflow-visible leading-[0.8]">
+        <!-- Заголовок с запасом справа для курсива -->
+        <h1 class="text-[clamp(2.5rem,8vw,8rem)] font-black uppercase italic tracking-[-0.05em] mb-20 pearl-text pr-20 overflow-visible leading-[0.8]">
             Creative <br/> Edits
         </h1>
 
@@ -27,8 +27,11 @@ import edits from '../data/edits.json';
                 <div class="group cursor-pointer" onclick={`openYouTubeModal('${edit.youtubeId}', '${edit.title}', '${edit.description}')`}>
                     <div class="relative aspect-video overflow-hidden rounded-[2rem] bg-zinc-950 border border-zinc-900 shadow-2xl">
                         <div class="absolute inset-0 z-10 flex flex-col justify-end p-8 md:p-16 bg-gradient-to-t from-black/80 via-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-700">
-                            <span class="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-4">{edit.category}</span>
-                            <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter pearl-hover italic">{edit.title}</h2>
+                            <!-- Контейнер для названия внутри карточки с запасом справа -->
+                            <div class="overflow-visible pr-10">
+                                <span class="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-4 block">{edit.category}</span>
+                                <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter pearl-hover italic leading-none">{edit.title}</h2>
+                            </div>
                         </div>
                         <video src={edit.previewVideo} class="h-full w-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[1.5s]" muted loop autoplay playsinline></video>
                     </div>
@@ -43,7 +46,7 @@ import edits from '../data/edits.json';
             <iframe id="modal-iframe" class="w-full h-full" src="" frameborder="0" allow="autoplay; fullscreen"></iframe>
         </div>
         <div class="mt-8 text-center max-w-2xl px-4" onclick="event.stopPropagation()">
-            <h2 id="modal-title" class="text-3xl font-black uppercase italic tracking-tighter mb-4 italic"></h2>
+            <h2 id="modal-title" class="text-3xl font-black uppercase italic tracking-tighter mb-4 italic pr-4"></h2>
             <p id="modal-desc" class="text-[10px] uppercase tracking-[0.3em] text-zinc-500 leading-relaxed"></p>
         </div>
     </div>
@@ -53,7 +56,7 @@ import edits from '../data/edits.json';
             const modal = document.getElementById('video-modal');
             const iframe = document.getElementById('modal-iframe');
             
-            // Ссылка для YouTube
+            // Исправленная ссылка для YouTube
             iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&modestbranding=1&rel=0`;
             
             document.getElementById('modal-title').innerText = title;
@@ -74,8 +77,25 @@ import edits from '../data/edits.json';
     </script>
 
     <style is:global>
-        .pearl-text { background: linear-gradient(to right, #444 20%, #888 40%, #fff 50%, #888 60%, #444 80%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 12s linear infinite; }
-        .pearl-hover { background: linear-gradient(45deg, #fff, #666, #fff); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s linear infinite; }
+        /* Стили с фиксом для Italic */
+        .pearl-text, .pearl-hover { 
+            display: inline-block; /* Чтобы padding-right работал корректно */
+            padding-right: 0.15em; /* Запас для наклона последней буквы */
+            background: linear-gradient(to right, #444 20%, #888 40%, #fff 50%, #888 60%, #444 80%); 
+            background-size: 200% auto; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            animation: shine 12s linear infinite; 
+        }
+
+        .group:hover .pearl-hover { 
+            background: linear-gradient(45deg, #fff, #666, #fff); 
+            background-size: 200% auto; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            animation: shine 3s linear infinite; 
+        }
+
         @keyframes shine { to { background-position: 200% center; } }
         ::-webkit-scrollbar { display: none; }
     </style>
