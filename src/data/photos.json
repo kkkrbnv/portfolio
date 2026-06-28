@@ -20,6 +20,7 @@
     "photos": [
       { "src": "/photography/redmen.jpg", "description": "Street wear" },
       { "src": "/photography/redcar.jpg", "description": "Classy Style" },
+      { "src": "/photography/bike.jpg", "description": "Bike" },
       { "src": "/photography/pinktree.jpg", "description": "Pink Tree" },
       { "src": "/photography/rome.jpg", "description": "Street" },
       { "src": "/photography/rome2.jpg", "description": "Street" },
