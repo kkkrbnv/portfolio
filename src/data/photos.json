@@ -13,5 +13,17 @@
       { "src": "/photography/bali1.jpg", "description": "Uluwatu cliff." },
       { "src": "/photography/bali2.jpg", "description": "Bali Waterfall." }
     ]
+  },
+   {
+    "seriesTitle": "Rome ",
+    "location": "Italy",
+    "photos": [
+      { "src": "/photography/redmen.jpg", "description": "Street wear" },
+      { "src": "/photography/redcar.jpg", "description": "Classy Style" }
+      { "src": "/photography/pinktree.jpg", "description": "Pink Tree" }
+      { "src": "/photography/rome.jpg", "description": "Street" }
+      { "src": "/photography/rome2.jpg", "description": "Street" }
+      { "src": "/photography/rome3.jpg", "description": "Street" }
+    ]
   }
 ]
