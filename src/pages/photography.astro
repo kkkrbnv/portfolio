@@ -1,174 +1,134 @@
----
-import seriesData from '../data/photos.json';
----
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Photography — Arslan Kurbanov</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/favicon.png" />
-</head>
-<body class="bg-[#000] text-[#fff] font-['Inter',sans-serif] selection:bg-white selection:text-black overflow-x-hidden">
-    
-    <!-- NAVIGATION -->
-    <nav class="fixed top-0 z-50 flex w-full justify-between p-6 md:p-10 mix-blend-difference items-center">
-        <a href="/" class="text-[10px] uppercase tracking-[0.4em] font-black border border-white/20 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all">← Back</a>
-        <span class="text-xl font-black italic tracking-tighter uppercase leading-none italic opacity-40">AK Archive</span>
-    </nav>
+<nav class="fixed top-0 z-50 flex w-full justify-between p-6 md:p-10 mix-blend-difference items-center">
+    <a href="/" class="text-[10px] uppercase tracking-[0.4em] font-black border border-white/20 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all">← Back</a>
+    <span class="text-xl font-black italic tracking-tighter uppercase leading-none italic opacity-40">AK Archive</span>
+</nav>
 
-    <main class="w-full pt-32 pb-40">
-        {seriesData.map((series, sIndex) => (
-            <div class="mb-40 md:mb-64">
-                <!-- SERIES HEADER -->
-                <header class="px-6 md:px-20 mb-20 md:mb-32 overflow-visible">
-                    <span class="text-[9px] uppercase tracking-[0.8em] text-zinc-600 block mb-4">{series.location}{'\u00A0'}</span>
-                    <h2 class="text-[clamp(3rem,10vw,11rem)] font-black uppercase italic tracking-tighter pearl-text leading-[0.8] pr-20 overflow-visible">
-                        {series.seriesTitle}{'\u00A0'}
-                    </h2>
-                </header>
+<main class="w-full pt-32 pb-40">
+    {seriesData.map((series, sIndex) => (
+        <div class="mb-40 md:mb-64">
+            <header class="px-6 md:px-20 mb-20 md:mb-32">
+                <span class="text-[9px] uppercase tracking-[0.8em] text-zinc-600 block mb-4">{series.location}{'\u00A0'}</span>
+                <h2 class="text-[clamp(3rem,10vw,11rem)] font-black uppercase italic tracking-tighter pearl-text leading-[0.8] pr-20 overflow-visible">
+                    {series.seriesTitle}{'\u00A0'}
+                </h2>
+            </header>
 
-                <!-- PHOTOS VERTICAL FEED -->
-                <div class="flex flex-col items-center gap-32 md:gap-52">
-                    {series.photos.map((photo, pIndex) => (
-                        <div class="w-full px-4 flex justify-center" style="content-visibility: auto; contain-intrinsic-size: 1px 800px;">
-                            <div class="relative group cursor-zoom-in" onclick={`openGallery(${sIndex}, ${pIndex})`}>
-                                <img src={photo.src} class="max-h-[75vh] w-auto object-contain shadow-2xl transition-all duration-1000 group-hover:scale-[1.01]" loading="lazy" />
-                                {photo.description && (
-                                    <div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all bg-black/50 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-full">
-                                        <p class="text-[9px] uppercase tracking-[0.3em] text-zinc-200 font-medium italic">{photo.description}{'\u00A0'}</p>
-                                    </div>
-                                )}
-                            </div>
+            <div class="flex flex-col items-center gap-32 md:gap-52">
+                {series.photos.map((photo, pIndex) => (
+                    <div class="w-full max-w-7xl px-4 flex justify-center" style="content-visibility: auto;">
+                        <div class="relative group cursor-zoom-in" onclick={`openGallery(${sIndex}, ${pIndex})`}>
+                            <img src={photo.src} class="max-h-[80vh] md:max-h-[100vh] w-auto object-contain shadow-2xl transition-all duration-1000 group-hover:scale-[1.01]" loading="lazy" />
+                            {photo.description && (
+                                <div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all bg-black/50 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-full">
+                                    <p class="text-[9px] uppercase tracking-[0.3em] text-zinc-200 font-medium italic">{photo.description}{'\u00A0'}</p>
+                                </div>
+                            )}
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
-        ))}
-    </main>
+        </div>
+    ))}
+</main>
 
-    <!-- FULLSCREEN ADVANCED MODAL -->
-    <div id="gallery-modal" class="fixed inset-0 z-[100] bg-black/98 backdrop-blur-3xl hidden flex-col items-center justify-center p-0" onclick="closeGallery()">
-        
-        <!-- Close Button -->
-        <button class="absolute top-8 right-8 z-[110] text-white opacity-20 hover:opacity-100 text-[10px] uppercase tracking-widest transition-all p-4">Close ×</button>
+<!-- ADVANCED GALLERY MODAL -->
+<div id="gallery-modal" class="fixed inset-0 z-[100] bg-black/98 backdrop-blur-3xl hidden flex-col items-center justify-center p-4" onclick="closeGallery()">
+    
+    <!-- Кнопка закрытия -->
+    <button class="absolute top-10 right-10 z-[110] text-white opacity-40 hover:opacity-100 text-[10px] uppercase tracking-widest transition-all">Close ×</button>
 
-        <!-- Main Display Area -->
-        <div class="relative w-full h-full flex flex-col items-center justify-center">
-            <div class="relative flex items-center justify-center w-full h-full p-4 md:p-10" onclick="event.stopPropagation()">
-                
-                <!-- The Big Photo -->
-                <img id="modal-img" src="" class="max-h-[90vh] max-w-[95vw] object-contain shadow-2xl transition-all duration-500 scale-95 cursor-pointer" onclick="nextPhoto()" />
-                
-                <!-- Navigation Arrows (Desktop) -->
-                <button onclick="prevPhoto()" class="absolute left-8 top-1/2 -translate-y-1/2 p-6 hidden md:block opacity-10 hover:opacity-100 transition-all text-4xl font-thin text-white">←</button>
-                <button onclick="nextPhoto()" class="absolute right-8 top-1/2 -translate-y-1/2 p-6 hidden md:block opacity-10 hover:opacity-100 transition-all text-4xl font-thin text-white">→</button>
-            </div>
+    <!-- Основная область фото -->
+    <div class="relative w-full h-full flex flex-col items-center justify-center pointer-events-none">
+        <div class="relative max-h-[75vh] max-w-[90vw] pointer-events-auto" onclick="event.stopPropagation()">
+            <img id="modal-img" src="" class="max-h-[75vh] max-w-full object-contain shadow-2xl transition-all duration-500 scale-95" onclick="nextPhoto()" />
             
-            <!-- Description Overlay -->
-            <div class="absolute bottom-32 left-0 w-full text-center pointer-events-none">
-                <p id="modal-desc" class="text-[10px] uppercase tracking-[0.4em] text-white/40 italic pr-10 overflow-visible"></p>
-            </div>
+            <!-- Стрелки (Desktop) -->
+            <button onclick="prevPhoto()" class="absolute -left-20 top-1/2 -translate-y-1/2 p-4 hidden md:block opacity-20 hover:opacity-100 transition-all">←</button>
+            <button onclick="nextPhoto()" class="absolute -right-20 top-1/2 -translate-y-1/2 p-4 hidden md:block opacity-20 hover:opacity-100 transition-all">→</button>
         </div>
-
-        <!-- THUMBNAILS TRACK -->
-        <div id="thumb-track" class="absolute bottom-10 flex gap-2 px-10 overflow-x-auto max-w-full pointer-events-auto" onclick="event.stopPropagation()">
-            <!-- JS Content -->
-        </div>
+        
+        <p id="modal-desc" class="mt-8 text-[10px] uppercase tracking-[0.4em] text-zinc-400 text-center max-w-2xl italic pointer-events-auto"></p>
     </div>
 
-    <script is:inline define:vars={{ seriesData }}>
-        let currentS = 0;
-        let currentP = 0;
+    <!-- ТРЕК МИНИАТЮР СНИЗУ -->
+    <div id="thumb-track" class="absolute bottom-10 flex gap-2 px-10 overflow-x-auto max-w-full pointer-events-auto" onclick="event.stopPropagation()">
+        <!-- Генерируется через JS -->
+    </div>
+</div>
 
-        window.openGallery = function(sIdx, pIdx) {
-            currentS = sIdx;
-            currentP = pIdx;
-            updateModal();
-            document.getElementById('gallery-modal').classList.remove('hidden');
-            document.getElementById('gallery-modal').classList.add('flex');
-            document.body.style.overflow = 'hidden';
-            renderThumbs();
-        }
+<script is:inline define:vars={{ seriesData }}>
+    let currentSeries = 0;
+    let currentPhoto = 0;
 
-        window.closeGallery = function() {
-            const modal = document.getElementById('gallery-modal');
-            document.getElementById('modal-img').classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.remove('flex');
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }, 300);
-        }
+    window.openGallery = function(sIdx, pIdx) {
+        currentSeries = sIdx;
+        currentPhoto = pIdx;
+        updateModal();
+        document.getElementById('gallery-modal').classList.remove('hidden');
+        document.getElementById('gallery-modal').classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        renderThumbs();
+    }
 
-        window.nextPhoto = function() {
-            const total = seriesData[currentS].photos.length;
-            currentP = (currentP + 1) % total;
-            updateModal();
-        }
+    window.closeGallery = function() {
+        const modal = document.getElementById('gallery-modal');
+        document.getElementById('modal-img').classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
 
-        window.prevPhoto = function() {
-            const total = seriesData[currentS].photos.length;
-            currentP = (currentP - 1 + total) % total;
-            updateModal();
-        }
+    window.nextPhoto = function() {
+        const total = seriesData[currentSeries].photos.length;
+        currentPhoto = (currentPhoto + 1) % total;
+        updateModal();
+    }
 
-        function updateModal() {
-            const photo = seriesData[currentS].photos[currentP];
-            const img = document.getElementById('modal-img');
-            img.src = photo.src;
-            document.getElementById('modal-desc').innerText = (photo.description || '') + '\u00A0';
-            setTimeout(() => img.classList.remove('scale-95'), 10);
-            renderThumbs();
-        }
+    window.prevPhoto = function() {
+        const total = seriesData[currentSeries].photos.length;
+        currentPhoto = (currentPhoto - 1 + total) % total;
+        updateModal();
+    }
 
-        function renderThumbs() {
-            const track = document.getElementById('thumb-track');
-            const photos = seriesData[currentS].photos;
-            if (photos.length <= 1) { track.innerHTML = ''; return; }
-            
-            track.innerHTML = photos.map((p, i) => `
-                <div onclick="window.setPhoto(${i})" class="w-10 h-14 md:w-12 md:h-16 flex-none cursor-pointer overflow-hidden rounded-sm transition-all border ${i === currentP ? 'border-white opacity-100 scale-110' : 'border-transparent opacity-20 hover:opacity-50'}">
-                    <img src="${p.src}" class="w-full h-full object-cover" />
-                </div>
-            `).join('');
-        }
+    function updateModal() {
+        const photo = seriesData[currentSeries].photos[currentPhoto];
+        const img = document.getElementById('modal-img');
+        img.src = photo.src;
+        document.getElementById('modal-desc').innerText = photo.description + '\u00A0';
+        setTimeout(() => img.classList.remove('scale-95'), 10);
+        renderThumbs();
+    }
 
-        window.setPhoto = function(i) {
-            currentP = i;
-            updateModal();
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeGallery();
-            if (e.key === 'ArrowRight') nextPhoto();
-            if (e.key === 'ArrowLeft') prevPhoto();
-        });
-    </script>
-
-    <style is:global>
-        html { scroll-behavior: smooth; background: #000; }
+    function renderThumbs() {
+        const track = document.getElementById('thumb-track');
+        const photos = seriesData[currentSeries].photos;
+        if (photos.length <= 1) { track.innerHTML = ''; return; }
         
-        .pearl-text { 
-            display: inline-block;
-            background: linear-gradient(to right, #333 20%, #888 40%, #fff 50%, #888 60%, #333 80%); 
-            background-size: 200% auto; 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            animation: shine 12s linear infinite; 
-            padding-right: 0.25em; /* Anti-cut fix */
-        }
-        @keyframes shine { to { background-position: 200% center; } }
-        
-        ::-webkit-scrollbar { width: 3px; }
-        ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
-        #thumb-track::-webkit-scrollbar { display: none; }
-        
-        /* Thumbnail track fading edges */
-        #thumb-track {
-            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-        }
-    </style>
-</body>
-</html>
+        track.innerHTML = photos.map((p, i) => `
+            <div onclick="window.setPhoto(${i})" class="w-12 h-16 flex-none cursor-pointer overflow-hidden rounded-sm transition-all border ${i === currentPhoto ? 'border-white opacity-100' : 'border-transparent opacity-30 hover:opacity-60'}">
+                <img src="${p.src}" class="w-full h-full object-cover" />
+            </div>
+        `).join('');
+    }
+
+    window.setPhoto = function(i) {
+        currentPhoto = i;
+        updateModal();
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeGallery();
+        if (e.key === 'ArrowRight') nextPhoto();
+        if (e.key === 'ArrowLeft') prevPhoto();
+    });
+</script>
+
+<style is:global>
+    html { scroll-behavior: smooth; background: #000; }
+    .pearl-text { display: inline-block; background: linear-gradient(to right, #333 20%, #888 40%, #fff 50%, #888 60%, #333 80%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 12s linear infinite; padding-right: 0.2em; }
+    @keyframes shine { to { background-position: 200% center; } }
+    ::-webkit-scrollbar { display: none; }
+    #thumb-track::-webkit-scrollbar { display: none; }
+</style>
