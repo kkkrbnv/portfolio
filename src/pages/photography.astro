@@ -17,7 +17,7 @@
                 {series.photos.map((photo, pIndex) => (
                     <div class="w-full max-w-7xl px-4 flex justify-center" style="content-visibility: auto;">
                         <div class="relative group cursor-zoom-in" onclick={`openGallery(${sIndex}, ${pIndex})`}>
-                            <img src={photo.src} class="max-h-[80vh] md:max-h-[100vh] w-auto object-contain shadow-2xl transition-all duration-1000 group-hover:scale-[1.01]" loading="lazy" />
+                            <img src={photo.src} class="max-h-[90vh] md:max-h-[110vh] w-auto object-contain shadow-2xl transition-all duration-1000 group-hover:scale-[1.01]" loading="lazy" />
                             {photo.description && (
                                 <div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all bg-black/50 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-full">
                                     <p class="text-[9px] uppercase tracking-[0.3em] text-zinc-200 font-medium italic">{photo.description}{'\u00A0'}</p>
