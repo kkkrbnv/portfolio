@@ -19,11 +19,11 @@
     "location": "Italy",
     "photos": [
       { "src": "/photography/redmen.jpg", "description": "Street wear" },
-      { "src": "/photography/redcar.jpg", "description": "Classy Style" }
-      { "src": "/photography/pinktree.jpg", "description": "Pink Tree" }
-      { "src": "/photography/rome.jpg", "description": "Street" }
-      { "src": "/photography/rome2.jpg", "description": "Street" }
+      { "src": "/photography/redcar.jpg", "description": "Classy Style" },
+      { "src": "/photography/pinktree.jpg", "description": "Pink Tree" },
+      { "src": "/photography/rome.jpg", "description": "Street" },
+      { "src": "/photography/rome2.jpg", "description": "Street" },
       { "src": "/photography/rome3.jpg", "description": "Street" }
     ]
-  }
+  },
 ]
