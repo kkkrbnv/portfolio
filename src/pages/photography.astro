@@ -36,7 +36,7 @@ import seriesData from '../data/photos.json';
                                 <!-- ФИКС: Уменьшена высота до 75vh для ПК -->
                                 <img 
                                     src={photo.src} 
-                                    class="max-h-[80vh] w-auto object-contain shadow-2xl transition-all duration-1000 group-hover:scale-[1.01]" 
+                                    class="max-h-[85vh] w-auto object-contain shadow-2xl transition-all duration-1000 group-hover:scale-[1.01]" 
                                     loading="lazy" 
                                 />
                                 {photo.description && (
@@ -58,9 +58,9 @@ import seriesData from '../data/photos.json';
         <button class="absolute top-10 right-10 z-[110] text-white opacity-40 hover:opacity-100 text-[10px] uppercase tracking-widest transition-all">Close ×</button>
 
         <div class="relative w-full h-full flex flex-col items-center justify-center pointer-events-none">
-            <div class="relative max-h-[80vh] max-w-[90vw] pointer-events-auto" onclick="event.stopPropagation()">
+            <div class="relative max-h-[85vh] max-w-[90vw] pointer-events-auto" onclick="event.stopPropagation()">
                 <!-- ФИКС: В модальном окне тоже ограничили высоту для вертикальных фото -->
-                <img id="modal-img" src="" class="max-h-[100vh] max-w-full object-contain shadow-2xl transition-all duration-500 scale-95" onclick="nextPhoto()" />
+                <img id="modal-img" src="" class="max-h-[95vh] max-w-full object-contain shadow-2xl transition-all duration-500 scale-95" onclick="nextPhoto()" />
                 
                 <!-- ARROWS -->
                 <button onclick="prevPhoto()" class="absolute -left-12 md:-left-20 top-1/2 -translate-y-1/2 p-4 opacity-20 hover:opacity-100 transition-all text-2xl font-light text-white">←</button>
