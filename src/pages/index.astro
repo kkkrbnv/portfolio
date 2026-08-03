@@ -5,41 +5,65 @@ import projects from '../data/projects.json';
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Arslan Kurbanov — Visual Artist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <title>Arslan Kurbanov — Visual Artist & Director</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="/favicon.png" />
 </head>
-<body class="bg-[#000] text-[#fff] font-['Inter',sans-serif] selection:bg-zinc-800 overflow-x-hidden">
+
+<body class="bg-[#000] text-[#fff] font-['Inter',sans-serif] selection:bg-white selection:text-black overflow-x-hidden antialiased">
+
+    <!-- ИНТЕРАКТИВНЫЙ СОФТБОКС (МЯГКАЯ ПОДСВЕТКА КУРСОРA) -->
+    <div id="cursor-aura" class="aura"></div>
+
+    <!-- МИНИМАЛИСТИЧНЫЙ ПРЕЛОАДЕР -->
+    <div id="loader" class="fixed inset-0 z-[1000] bg-black flex items-center justify-center pointer-events-none transition-opacity duration-700">
+        <div class="overflow-hidden">
+            <span class="text-sm font-bold uppercase tracking-[0.8em] text-zinc-400 block animate-reveal">Arslan Kurbanov</span>
+        </div>
+    </div>
     
+    <!-- NAVIGATION -->
     <nav class="fixed top-0 z-50 flex w-full justify-between p-6 md:p-10 mix-blend-difference items-center">
-        <span class="text-xl font-black italic tracking-tighter uppercase leading-none">AK</span>
-        <div class="flex items-center gap-6 text-[9px] font-bold uppercase tracking-[0.3em]">
-            <a href="#contact" class="hover:opacity-40 transition-all border-b border-zinc-800 pb-1">Contact</a>
-            <a href="/special" class="bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-all uppercase text-[8px] font-black">Special</a>
+        <a href="/" class="text-2xl font-black italic tracking-tighter uppercase leading-none">AK®</a>
+        <div class="flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.4em]">
+            <a href="#contact" class="hover:text-zinc-400 transition-colors">Contact</a>
+            <a href="/special" class="bg-white text-black px-5 py-2.5 rounded-full hover:bg-zinc-200 transition-all font-black">Special</a>
         </div>
     </nav>
 
-    <main class="px-4 md:px-10">
-        <!-- HERO -->
-        <section class="relative flex min-h-screen flex-col justify-center pt-20">
-            <h1 class="flex flex-col leading-[0.8] tracking-tighter uppercase italic overflow-visible">
-                <span class="text-[clamp(2rem,9vw,8rem)] font-black text-zinc-400">Arslan</span>
-                <span class="pearl-text text-[clamp(3rem,12vw,12rem)] font-[900] leading-none block font-black pr-4">Kurbanov</span>
-            </h1>
-            <div class="mt-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
-                <h2 class="max-w-xl text-2xl md:text-4xl font-medium uppercase tracking-tighter leading-[1.1] text-zinc-200">
-                    Visual Creator <br/> <span class="text-zinc-800">/</span> Based in Earth
+    <main class="px-4 md:px-12">
+        <!-- HERO SECTION -->
+        <section class="relative min-h-screen flex flex-col justify-center items-center text-center pt-20">
+            <div class="z-10">
+                <span class="text-[10px] font-bold uppercase tracking-[0.8em] text-zinc-500 mb-6 block animate-slideUp">Visual Creator</span>
+                
+                <h1 class="flex flex-col leading-[0.85] tracking-tighter uppercase font-black animate-scaleUp">
+                    <span class="text-[clamp(3rem,12vw,10rem)] text-zinc-500">Arslan</span>
+                    <span class="pearl-text text-[clamp(4rem,16vw,14rem)] block">Kurbanov</span>
+                </h1>
+            </div>
+            
+            <div class="mt-16 flex flex-col items-center gap-12 w-full max-w-4xl animate-slideUp">
+                <h2 class="text-xl md:text-3xl font-medium uppercase tracking-tighter leading-relaxed text-zinc-300 max-w-2xl">
+                    Director of Photography <span class="text-zinc-800">/</span> Based in Earth
                 </h2>
-                <div class="grid grid-cols-3 w-full md:w-auto gap-2">
-                    <a href="https://instagram.com/kkkrbnv" target="_blank" class="btn-2026">Instagram</a>
-                    <a href="https://www.youtube.com/@kkkrbnv" target="_blank" class="btn-2026 bg-white !text-black">YouTube</a>
-                    <a href="https://t.me/kkkrbnv" target="_blank" class="btn-2026">Telegram</a>
+                
+                <!-- МАГНИТНЫЕ КНОПКИ -->
+                <div class="flex flex-row flex-nowrap gap-3 justify-center w-full md:w-auto">
+                    <a href="https://instagram.com/kkkrbnv" target="_blank" class="btn-2026 magnetic flex-1 md:flex-none">Instagram</a>
+                    <a href="https://vimeo.com/user259947321" target="_blank" class="btn-2026 bg-white !text-black magnetic flex-1 md:flex-none">Vimeo</a>
+                    <a href="https://t.me/kkkrbnv" target="_blank" class="btn-2026 magnetic flex-1 md:flex-none">Telegram</a>
                 </div>
+            </div>
+
+            <!-- ИНДИКАТОР СКРОЛЛА -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-20">
+                <div class="w-[1px] h-10 bg-white"></div>
             </div>
         </section>
 
         <!-- VIDEO GRID -->
-        <section id="work" class="grid grid-cols-1 md:grid-cols-2 gap-6 py-20 border-t border-zinc-900">
+        <section id="work" class="grid grid-cols-1 md:grid-cols-2 gap-8 py-28 border-t border-zinc-900/80">
             {projects.map((p) => {
                 const isShowreel = p.title === "SHOWREEL";
                 const isEdit = p.title === "CREATIVE EDIT";
@@ -47,54 +71,154 @@ import projects from '../data/projects.json';
                 const target = (isShowreel || isEdit) ? "_self" : "_blank";
 
                 return (
-                    <a href={link} target={target} class="group relative aspect-video overflow-hidden rounded-[1.5rem] bg-zinc-950 block border border-zinc-900">
-                        <div class="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-10 bg-gradient-to-t from-black/80 via-transparent transition-all duration-700 group-hover:bg-black/10">
-                            <span class="text-[8px] uppercase tracking-[0.4em] text-zinc-400 mb-2">{p.category}</span>
-                            <h3 class="text-xl md:text-3xl font-black uppercase italic tracking-tighter pearl-hover transition-all duration-500">{p.title}</h3>
+                    <a 
+                        href={link} 
+                        target={target} 
+                        class="group relative aspect-video overflow-hidden rounded-2xl bg-zinc-950 block border border-zinc-900/80 transition-all duration-700 hover:border-zinc-700"
+                    >
+                        <!-- Оверлей с высокой читаемостью -->
+                        <div class="absolute inset-0 z-20 flex flex-col justify-end p-8 md:p-12 bg-gradient-to-t from-black/90 via-black/20 to-transparent">
+                            <span class="text-[9px] font-bold uppercase tracking-[0.5em] text-zinc-400 mb-3">{p.category}</span>
+                            <h3 class="text-2xl md:text-4xl font-black uppercase tracking-tight pearl-hover transition-all duration-500">{p.title}</h3>
                         </div>
-                        <video src={p.previewVideo} class="h-full w-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000" muted loop playsinline autoplay></video>
+                        
+                        <video 
+                            src={p.previewVideo} 
+                            class="h-full w-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-1000 ease-out" 
+                            muted loop playsinline autoplay
+                        ></video>
                     </a>
                 );
             })}
         </section>
 
         <!-- PHOTOGRAPHY BLOCK -->
-        <section class="py-10 flex justify-center px-4">
-            <a href="/photography" class="group relative w-full max-w-4xl aspect-[3/1.5] overflow-hidden rounded-[2rem] bg-zinc-900 block border border-zinc-900 shadow-2xl">
-                <div class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/60 group-hover:bg-black/30 transition-all duration-700 backdrop-blur-[2px] group-hover:backdrop-blur-none text-center p-4">
-                    <span class="text-[8px] md:text-[10px] uppercase tracking-[0.6em] text-zinc-500 mb-2 text-zinc-400">Exclusive Stills</span>
-                    <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter pearl-hover italic">Photography</h2>
+        <section class="py-12 flex justify-center">
+            <a href="/photography" class="group relative w-full max-w-5xl aspect-[21/9] overflow-hidden rounded-3xl bg-zinc-950 block border border-zinc-900/80 transition-all duration-700 hover:border-zinc-700">
+                <div class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/50 group-hover:bg-black/20 transition-all duration-700 backdrop-blur-[2px]">
+                    <span class="text-[9px] font-bold uppercase tracking-[0.6em] text-zinc-400 mb-3">Stills & Archive</span>
+                    <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tight pearl-hover">Photography</h2>
                 </div>
-                <img src="/photography/Fashion.jpg" class="h-full w-full object-cover opacity-40 transition-all duration-1000 group-hover:scale-110" />
+                <img src="/photo1.jpg" class="h-full w-full object-cover opacity-40 group-hover:opacity-80 group-hover:scale-[1.03] transition-all duration-1000 ease-out" />
             </a>
         </section>
 
         <!-- CONTACT -->
-        <section id="contact" class="py-32 border-t border-zinc-900">
-            <div class="max-w-2xl">
-                <h2 class="text-5xl font-black uppercase italic tracking-tighter mb-12 italic italic">Get in touch</h2>
-                <form action="https://formspree.io/f/xnjradqk" method="POST" class="space-y-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <input type="text" name="name" class="bg-transparent border-b border-zinc-800 py-4 outline-none text-xl focus:border-white transition-colors placeholder-zinc-700" placeholder="Name" required />
-                        <input type="email" name="email" class="bg-transparent border-b border-zinc-800 py-4 outline-none text-xl focus:border-white transition-colors placeholder-zinc-700" placeholder="Email" required />
+        <section id="contact" class="py-36 border-t border-zinc-900/80">
+            <div class="max-w-2xl mx-auto text-center md:text-left">
+                <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tight mb-4">Get in Touch</h2>
+                <p class="text-xs uppercase tracking-[0.4em] text-zinc-500 mb-16">Available for worldwide commercial & creative projects.</p>
+
+                <form action="https://formspree.io/f/xnjradqk" method="POST" class="space-y-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
+                        <input type="text" name="name" class="bg-transparent border-b border-zinc-800 py-4 outline-none text-lg focus:border-white transition-colors placeholder-zinc-700 font-medium" placeholder="Name" required />
+                        <input type="email" name="email" class="bg-transparent border-b border-zinc-800 py-4 outline-none text-lg focus:border-white transition-colors placeholder-zinc-700 font-medium" placeholder="Email" required />
                     </div>
-                    <button type="submit" class="w-full md:w-auto bg-white text-black px-12 py-5 rounded-full text-[10px] font-black uppercase tracking-[0.4em] hover:bg-zinc-200 transition-all active:scale-95">Send Message</button>
+                    <button type="submit" class="w-full md:w-auto bg-white text-black px-16 py-6 rounded-full text-[10px] font-black uppercase tracking-[0.4em] hover:bg-zinc-200 transition-all active:scale-95">Send Message</button>
                 </form>
             </div>
         </section>
     </main>
 
-    <footer class="p-12 text-[8px] text-zinc-800 uppercase tracking-[0.6em] text-center italic border-t border-zinc-900/50">
-        Arslan Kurbanov © living in this ERA
+    <footer class="p-12 text-[9px] font-bold text-zinc-700 uppercase tracking-[0.5em] text-center border-t border-zinc-900/50">
+        Arslan Kurbanov © All Rights Reserved
     </footer>
+
+    <script is:inline>
+        // Прелоадер
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => loader.remove(), 700);
+                }
+            }, 800);
+        });
+
+        // Мягкий софтбокс за мышкой
+        const aura = document.getElementById('cursor-aura');
+        let mouseX = 0, mouseY = 0;
+        let auraX = 0, auraY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateAura() {
+            auraX += (mouseX - auraX) * 0.08;
+            auraY += (mouseY - auraY) * 0.08;
+            if (aura) {
+                aura.style.transform = `translate(${auraX - 200}px, ${auraY - 200}px)`;
+            }
+            requestAnimationFrame(animateAura);
+        }
+        animateAura();
+
+        // Магнитные кнопки
+        const magnetics = document.querySelectorAll('.magnetic');
+        magnetics.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = `translate(0, 0)`;
+            });
+        });
+    </script>
 
     <style is:global>
         :root { color-scheme: dark; }
         html { scroll-behavior: smooth; background: #000; }
-        .btn-2026 { @apply border border-zinc-800 px-4 md:px-8 py-4 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest hover:border-white transition-all text-center flex items-center justify-center; }
-        .pearl-text { background: linear-gradient(to right, #333 20%, #888 40%, #fff 50%, #888 60%, #333 80%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 10s linear infinite; }
-        .group:hover .pearl-hover { background: linear-gradient(45deg, #fff, #666, #fff); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 2s linear infinite; }
+
+        /* Мягкий софтбокс */
+        .aura {
+            position: fixed; top: 0; left: 0; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%; pointer-events: none; z-index: 1;
+            filter: blur(50px); will-change: transform;
+        }
+
+        .btn-2026 { @apply border border-zinc-800 py-5 px-8 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center; }
+
+        /* Идеально чистый перламутр */
+        .pearl-text { 
+            display: inline-block; 
+            background: linear-gradient(to right, #444 10%, #aaa 40%, #fff 50%, #aaa 60%, #444 90%); 
+            background-size: 200% auto; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            animation: shine 10s linear infinite; 
+            padding-right: 0.1em;
+        }
+
+        .pearl-hover { 
+            background: linear-gradient(45deg, #fff, #888, #fff); 
+            background-size: 200% auto; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            animation: shine 2s linear infinite; 
+        }
+
         @keyframes shine { to { background-position: 200% center; } }
+        
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fadeIn { animation: fadeIn 0.8s ease forwards; }
+
+        @keyframes reveal { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .animate-reveal { animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .animate-slideUp { opacity: 0; animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards; }
+
+        @keyframes scaleUp { from { transform: scale(0.98); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .animate-scaleUp { opacity: 0; animation: scaleUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
+
         ::-webkit-scrollbar { display: none; }
     </style>
 </body>
