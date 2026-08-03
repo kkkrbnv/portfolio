@@ -135,7 +135,6 @@ import projects from '../data/projects.json';
                                 target={isInternal ? "_self" : "_blank"}
                                 class="motion-card group relative block aspect-video overflow-hidden rounded-none bg-zinc-950 border border-zinc-900 hover:border-white transition-all duration-500"
                             >
-                                <!-- Video Loop -->
                                 <video 
                                     src={p.previewVideo} 
                                     class="w-full h-full object-cover opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out" 
@@ -145,20 +144,17 @@ import projects from '../data/projects.json';
                                     autoplay
                                 ></video>
 
-                                <!-- Top Index Badge -->
                                 <div class="absolute top-0 inset-x-0 p-6 flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-zinc-400 z-20">
                                     <span class="bg-black/80 px-3 py-1 border border-zinc-800 group-hover:border-white transition-colors">REF 0{idx + 1}</span>
                                     <span class="bg-black/80 px-3 py-1 border border-zinc-800">{p.category}</span>
                                 </div>
 
-                                <!-- Floating Interactive Trigger -->
                                 <div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                                     <span class="px-6 py-3 bg-white text-black font-mono font-bold text-[10px] uppercase tracking-widest rounded-full shadow-2xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                                         {isInternal ? "OPEN VAULT →" : "WATCH VIMEO ↗"}
                                     </span>
                                 </div>
 
-                                <!-- Bottom Title Overlay -->
                                 <div class="absolute bottom-0 inset-x-0 p-6 md:p-8 bg-gradient-to-t from-black via-black/40 to-transparent z-20">
                                     <h3 class="text-2xl md:text-4xl font-black uppercase tracking-tight text-white group-hover:translate-x-2 transition-transform duration-500 pearl-hover">
                                         {p.title}
@@ -171,27 +167,29 @@ import projects from '../data/projects.json';
             </div>
         </section>
 
-        <!-- SECTION 03: PHOTOGRAPHY EXHIBITION BANNER -->
+        <!-- SECTION 03: PHOTOGRAPHY EXHIBITION BANNER (ВЫНЕСЕННАЯ ШАПКА) -->
         <section class="py-20 border-b border-zinc-900 reveal-on-scroll">
-            <div class="text-xs font-mono uppercase tracking-widest text-zinc-500 mb-8">
-                [ 03 / STILLS ARCHIVE ]
+            
+            <!-- Шапка над баннером (Теперь отлично смотрится на мобилке) -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 font-mono text-[10px] uppercase tracking-widest">
+                <span class="text-zinc-500">03 / STILLS ARCHIVE — EXHIBITION / CURATED STILLS</span>
+                <a href="/photography" class="bg-white text-black px-4 py-2 font-bold hover:bg-zinc-200 transition-colors w-full sm:w-auto text-center">
+                    ENTER EXHIBITION →
+                </a>
             </div>
 
+            <!-- Сама карточка баннера без наложения мелкого текста -->
             <a href="/photography" class="motion-card group relative block aspect-[21/9] md:aspect-[24/7] overflow-hidden rounded-none bg-zinc-950 border border-zinc-900 hover:border-white transition-colors duration-500">
                 <img 
                     src="/photography/Fashion.jpg" 
                     alt="Photography Archive" 
-                    class="w-full h-full object-cover opacity-30 group-hover:opacity-75 group-hover:scale-105 transition-all duration-1000 ease-out" 
+                    class="w-full h-full object-cover opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000 ease-out" 
                 />
                 
-                <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-between z-20">
-                    <div class="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest">
-                        <span class="bg-black/80 px-3 py-1 border border-zinc-800 text-zinc-400">EXHIBITION / CURATED STILLS</span>
-                        <span class="bg-white text-black px-4 py-1.5 font-bold group-hover:bg-zinc-200 transition-colors">ENTER EXHIBITION →</span>
-                    </div>
-
+                <!-- Только крупный заголовок внутри -->
+                <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end bg-gradient-to-t from-black/80 via-transparent z-20">
                     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                        <h3 class="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white pearl-hover">
+                        <h3 class="text-3xl md:text-7xl font-black uppercase tracking-tighter text-white pearl-hover">
                             PHOTOGRAPHY GALLERY
                         </h3>
                         <p class="text-xs font-mono uppercase tracking-widest text-zinc-400">
@@ -216,7 +214,7 @@ import projects from '../data/projects.json';
                     </div>
                     
                     <div class="mt-12 space-y-2 text-xs uppercase tracking-widest text-zinc-400">
-                        <p>EMAIL: <a href="mailto:contact@arslankurbanov.com" class="text-white underline">CONTACT@ARSLANKURBANOV.COM</a></p>
+                        <p>EMAIL: <a href="mailto:contact@arslankurbanov.com" class="text-white underline"contact@arslankurbanov.com</a></p>
                         <p>TELEGRAM: <a href="https://t.me/kkkrbnv" target="_blank" class="text-white underline">@KKKRBNV</a></p>
                     </div>
                 </div>
@@ -256,7 +254,7 @@ import projects from '../data/projects.json';
                             type="submit" 
                             class="w-full bg-white text-black font-black uppercase text-xs tracking-widest py-5 rounded-none hover:bg-zinc-200 transition-colors"
                         >
-                            SUBMIT INQUIRY →
+                            SENC REQUEST  →
                         </button>
                     </form>
                 </div>
@@ -275,7 +273,6 @@ import projects from '../data/projects.json';
 
     <!-- INTERACTIVE MOTION & GRAPHICS SCRIPT -->
     <script is:inline>
-        // --- 1. СЧЕТЧИК ПРЕЛОАДЕРА (00 -> 100%) ---
         let count = 0;
         const counterEl = document.getElementById('counter');
         const progressEl = document.getElementById('progress-bar');
@@ -296,7 +293,6 @@ import projects from '../data/projects.json';
             if (progressEl) progressEl.style.width = count + '%';
         }, 35);
 
-        // --- 2. МЯГКИЙ СОФТБОКС (AURA SPOTLIGHT) ---
         const aura = document.getElementById('aura');
         let mouseX = 0, mouseY = 0;
         let auraX = 0, auraY = 0;
@@ -316,7 +312,6 @@ import projects from '../data/projects.json';
         }
         animateAura();
 
-        // --- 3. 3D ПАРАЛЛАКС ЗАГОЛОВКА ПРИ ДВИЖЕНИИ МЫШКИ ---
         const heroTitle = document.getElementById('hero-title');
         document.addEventListener('mousemove', (e) => {
             if (!heroTitle) return;
@@ -325,7 +320,6 @@ import projects from '../data/projects.json';
             heroTitle.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
         });
 
-        // --- 4. СКРОЛЛ-ИНЕРЦИЯ ---
         let currentScroll = window.pageYOffset;
         const cards = document.querySelectorAll('.motion-card');
 
@@ -343,7 +337,6 @@ import projects from '../data/projects.json';
         }
         scrollInertia();
 
-        // --- 5. МАГНИТНЫЕ КНОПКИ ---
         const magnetics = document.querySelectorAll('.magnetic');
         magnetics.forEach(btn => {
             btn.addEventListener('mousemove', (e) => {
@@ -352,81 +345,4 @@ import projects from '../data/projects.json';
                 const y = e.clientY - rect.top - rect.height / 2;
                 btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
             });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = `translate(0, 0)`;
-            });
-        });
-
-        // --- 6. ОБСЕРВЕР ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-
-        // --- 7. ЧАСЫ В РЕАЛЬНОМ ВРЕМЕНИ ---
-        function updateTime() {
-            const now = new Date();
-            const hours = String(now.getUTCHours()).padStart(2, '0');
-            const minutes = String(now.getUTCMinutes()).padStart(2, '0');
-            const el = document.getElementById('live-time');
-            if (el) el.innerText = `UTC / ${hours}:${minutes}`;
-        }
-        updateTime();
-        setInterval(updateTime, 10000);
-    </script>
-
-    <style is:global>
-        :root { color-scheme: dark; }
-        html { scroll-behavior: smooth; background: #080808; }
-
-        .perspective-container {
-            perspective: 1000px;
-        }
-
-        .aura-spotlight {
-            position: fixed; top: 0; left: 0; width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%; pointer-events: none; z-index: 1;
-            filter: blur(60px); will-change: transform;
-        }
-
-        /* КЛАССИЧЕСКИЙ СЕРЕБРЯНЫЙ ПЕРЛАМУТР ДЛЯ ОБОИХ СЛОВ */
-        .pearl-text { 
-            display: inline-block; 
-            background: linear-gradient(to right, #444 10%, #aaa 40%, #fff 50%, #aaa 60%, #444 90%); 
-            background-size: 200% auto; 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            animation: shine 10s linear infinite; 
-            padding-right: 0.15em;
-        }
-
-        .pearl-hover { 
-            background: linear-gradient(45deg, #fff, #888, #fff); 
-            background-size: 200% auto; 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            animation: shine 2s linear infinite; 
-        }
-
-        @keyframes shine { to { background-position: 200% center; } }
-
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-on-scroll.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        ::-webkit-scrollbar { display: none; }
-    </style>
-</body>
-</html>
+            btn.addEventListener('mouseleave',
