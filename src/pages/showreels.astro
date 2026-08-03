@@ -11,6 +11,10 @@ import showreels from '../data/showreels.json';
 </head>
 <body class="bg-[#050505] text-[#EFEFEF] font-['Inter',sans-serif] selection:bg-white selection:text-black antialiased overflow-x-hidden border-t-2 border-white">
 
+    <!-- ЭФФЕКТ ЗАТЕМНЕННОЙ КИНОПЛЕНКИ (DARK TINT + VIGNETTE) -->
+    <div class="fixed inset-0 z-30 pointer-events-none bg-black/30 mix-blend-multiply"></div>
+    <div class="fixed inset-0 z-30 pointer-events-none bg-radial-vignette"></div>
+
     <!-- AURA SPOTLIGHT -->
     <div id="aura" class="aura-spotlight"></div>
 
@@ -23,36 +27,41 @@ import showreels from '../data/showreels.json';
         <span class="font-black text-white tracking-tighter">AK®</span>
     </header>
 
-    <main class="pt-32 px-4 md:px-12 max-w-[1900px] mx-auto pb-40">
+    <main class="pt-32 px-4 md:px-12 max-w-[1600px] mx-auto pb-40 relative z-20">
         <!-- Page Title -->
-        <div class="border-b border-zinc-900 pb-12 mb-20">
+        <div class="border-b border-zinc-900 pb-10 mb-16">
             <span class="text-xs font-mono uppercase tracking-[0.3em] text-zinc-500 block mb-4">[ DIRECTING & CINEMATOGRAPHY ]</span>
-            <h1 class="text-[clamp(3rem,10vw,10rem)] font-black uppercase italic tracking-tighter leading-[0.8] pearl-text pr-12 overflow-visible">
+            <h1 class="text-[clamp(3rem,8vw,8rem)] font-black uppercase italic tracking-tighter leading-[0.85] pearl-text pr-12 overflow-visible">
                 SELECTED <br /> SHOWREELS{'\u00A0'}
             </h1>
         </div>
 
-        <!-- Vertical List -->
-        <div class="flex flex-col gap-28 md:gap-40">
+        <!-- COMPACT MOTION GRID (АККУРАТНЫЕ ПЛАШКИ 16:9 С ЗАКРУГЛЕНИЕМ) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {showreels.map((reel, idx) => (
-                <article class="group cursor-pointer border-b border-zinc-900/80 pb-20 reveal-on-scroll" onclick={`openVimeoModal('${reel.vimeoId}', '${reel.title}', '${reel.description}')`}>
-                    <div class="flex justify-between items-end mb-6 font-mono text-xs uppercase tracking-widest">
-                        <div class="overflow-visible pr-8">
-                            <span class="text-zinc-500 block mb-2">REF 0{idx + 1} // {reel.category}</span>
-                            <h2 class="text-[clamp(2rem,5vw,5rem)] font-black uppercase italic tracking-tighter text-white group-hover:text-zinc-400 transition-colors leading-none pr-8">
-                                {reel.title}{'\u00A0'}
-                            </h2>
-                        </div>
-                        <span class="text-zinc-600 hidden md:inline-block">PLAY PROJECT ↗</span>
-                    </div>
-
-                    <div class="relative w-full aspect-video md:aspect-[21/9] overflow-hidden rounded-none bg-zinc-950 border border-zinc-900 group-hover:border-white transition-colors duration-500">
-                        <div class="absolute inset-0 z-20 flex items-center justify-center bg-black/40 group-hover:bg-transparent transition-all">
-                             <span class="px-6 py-3 bg-white text-black font-mono font-bold text-[10px] uppercase tracking-widest rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                                VIEW VIMEO →
-                             </span>
-                        </div>
+                <article class="group cursor-pointer reveal-on-scroll" onclick={`openVimeoModal('${reel.vimeoId}', '${reel.title}', '${reel.description}')`}>
+                    
+                    <!-- Компактная карточка 16:9 с закруглением -->
+                    <div class="relative w-full aspect-video overflow-hidden rounded-2xl bg-zinc-950 border border-zinc-900 group-hover:border-zinc-500 transition-all duration-500 shadow-2xl">
+                        
+                        <!-- Превью видео -->
                         <video src={reel.previewVideo} class="h-full w-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-out" muted loop autoplay playsinline></video>
+
+                        <!-- Верхний индекс -->
+                        <div class="absolute top-0 inset-x-0 p-6 flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-zinc-400 z-20">
+                            <span class="bg-black/80 px-3 py-1 border border-zinc-800">REF 0{idx + 1}</span>
+                            <span class="bg-black/80 px-3 py-1 border border-zinc-800">{reel.category}</span>
+                        </div>
+
+                        <!-- Нижняя плашка с названием -->
+                        <div class="absolute bottom-0 inset-x-0 p-6 md:p-8 bg-gradient-to-t from-black via-black/40 to-transparent z-20 flex justify-between items-end">
+                            <div class="overflow-visible pr-4">
+                                <h2 class="text-2xl md:text-3xl font-black uppercase italic tracking-tighter text-white pearl-hover leading-none pr-4">
+                                    {reel.title}{'\u00A0'}
+                                </h2>
+                            </div>
+                            <span class="text-[10px] font-mono text-white underline opacity-0 group-hover:opacity-100 transition-opacity">PLAY VIMEO ↗</span>
+                        </div>
                     </div>
                 </article>
             ))}
@@ -63,7 +72,7 @@ import showreels from '../data/showreels.json';
     <div id="vimeo-modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl hidden flex-col items-center justify-center p-6" onclick="closeVimeoModal()">
         <button class="absolute top-8 right-8 z-[110] text-white/50 hover:text-white font-mono text-xs uppercase tracking-widest p-4">CLOSE ×</button>
 
-        <div class="relative w-full max-w-[85vw] aspect-video bg-black rounded-none overflow-hidden border border-zinc-800" onclick="event.stopPropagation()">
+        <div class="relative w-full max-w-[85vw] aspect-video bg-black rounded-2xl overflow-hidden border border-zinc-800" onclick="event.stopPropagation()">
             <iframe id="vimeo-iframe" src="" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
         <div class="mt-8 text-center max-w-2xl px-4 font-mono uppercase tracking-widest" onclick="event.stopPropagation()">
@@ -72,7 +81,7 @@ import showreels from '../data/showreels.json';
         </div>
     </div>
 
-    <footer class="border-t border-zinc-900 py-8 px-6 md:px-12 flex justify-between items-center text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+    <footer class="border-t border-zinc-900 py-8 px-6 md:px-12 flex justify-between items-center text-[10px] font-mono text-zinc-600 uppercase tracking-widest relative z-20">
         <span>[ © 2026 ARSLAN KURBANOV ]</span>
         <a href="#top" class="hover:text-white transition-colors">TOP ↑</a>
     </footer>
@@ -117,17 +126,31 @@ import showreels from '../data/showreels.json';
     <style is:global>
         :root { color-scheme: dark; }
         html { background: #050505; }
+        
+        /* Радиальная виньетка плёнки */
+        .bg-radial-vignette {
+            background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.8) 100%);
+        }
+
         .aura-spotlight {
             position: fixed; top: 0; left: 0; width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
             border-radius: 50%; pointer-events: none; z-index: 1; filter: blur(60px);
         }
+
         .pearl-text { 
             display: inline-block; 
             background: linear-gradient(to right, #444 10%, #aaa 40%, #fff 50%, #aaa 60%, #444 90%); 
             background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
             animation: shine 10s linear infinite; padding-right: 0.15em;
         }
+
+        .pearl-hover { 
+            background: linear-gradient(45deg, #fff, #888, #fff); 
+            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+            animation: shine 2s linear infinite; 
+        }
+
         @keyframes shine { to { background-position: 200% center; } }
         .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
