@@ -1,225 +1,237 @@
 ---
 import projects from '../data/projects.json';
 ---
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Arslan Kurbanov — Visual Artist & Director</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Arslan Kurbanov — Motion & Visual Archive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="/favicon.png" />
 </head>
 
-<body class="bg-[#000] text-[#fff] font-['Inter',sans-serif] selection:bg-white selection:text-black overflow-x-hidden antialiased">
+<body class="bg-[#030303] text-[#F3F3F3] font-['Inter',sans-serif] selection:bg-white selection:text-black antialiased overflow-x-hidden">
 
-    <!-- ИНТЕРАКТИВНЫЙ СОФТБОКС (МЯГКАЯ ПОДСВЕТКА КУРСОРA) -->
-    <div id="cursor-aura" class="aura"></div>
-
-    <!-- МИНИМАЛИСТИЧНЫЙ ПРЕЛОАДЕР -->
-    <div id="loader" class="fixed inset-0 z-[1000] bg-black flex items-center justify-center pointer-events-none transition-opacity duration-700">
-        <div class="overflow-hidden">
-            <span class="text-sm font-bold uppercase tracking-[0.8em] text-zinc-400 block animate-reveal">Arslan Kurbanov</span>
+    <!-- NAVIGATION (MOTIONSITES STYLE) -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#030303]/80 backdrop-blur-xl border-b border-zinc-900/80 px-6 md:px-10 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-3 group">
+            <span class="w-2.5 h-2.5 rounded-full bg-white group-hover:scale-125 transition-transform"></span>
+            <span class="text-sm font-black tracking-widest uppercase">AK<span class="text-zinc-600 font-normal">.MOTION</span></span>
+        </a>
+        
+        <div class="flex items-center gap-4 text-[10px] font-mono uppercase tracking-widest text-zinc-400">
+            <a href="#work" class="px-4 py-2 rounded-full border border-zinc-800 hover:border-zinc-600 hover:text-white transition-all hidden sm:inline-block">Vault</a>
+            <a href="#contact" class="px-4 py-2 rounded-full border border-zinc-800 hover:border-zinc-600 hover:text-white transition-all">Contact</a>
+            <a href="/special" class="px-4 py-2 rounded-full bg-white text-black font-bold hover:bg-zinc-200 transition-all">Special</a>
         </div>
-    </div>
-    
-    <!-- NAVIGATION -->
-    <nav class="fixed top-0 z-50 flex w-full justify-between p-6 md:p-10 mix-blend-difference items-center">
-        <a href="/" class="text-2xl font-black italic tracking-tighter uppercase leading-none">AK®</a>
-        <div class="flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.4em]">
-            <a href="#contact" class="hover:text-zinc-400 transition-colors">Contact</a>
-            <a href="/special" class="bg-white text-black px-5 py-2.5 rounded-full hover:bg-zinc-200 transition-all font-black">Special</a>
-        </div>
-    </nav>
+    </header>
 
-    <main class="px-4 md:px-12">
-        <!-- HERO SECTION -->
-        <section class="relative min-h-screen flex flex-col justify-center items-center text-center pt-20">
-            <div class="z-10">
-                <span class="text-[10px] font-bold uppercase tracking-[0.8em] text-zinc-500 mb-6 block animate-slideUp">Visual Creator</span>
-                
-                <h1 class="flex flex-col leading-[0.85] tracking-tighter uppercase font-black animate-scaleUp">
-                    <span class="text-[clamp(3rem,12vw,10rem)] text-zinc-500">Arslan</span>
-                    <span class="pearl-text text-[clamp(4rem,16vw,14rem)] block">Kurbanov</span>
+    <main class="pt-32 px-4 md:px-10 max-w-[1700px] mx-auto">
+
+        <!-- HERO SECTION (MOTIONSITES STYLE) -->
+        <section class="min-h-[80vh] flex flex-col justify-center py-12 border-b border-zinc-900/80">
+            
+            <!-- Floating Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-800 text-[10px] font-mono text-zinc-400 mb-8 w-fit backdrop-blur-md">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>AVAILABLE FOR DIRECTING / MOTION / 2026</span>
+            </div>
+
+            <!-- Big Headline -->
+            <div class="space-y-4">
+                <h1 class="text-[11vw] md:text-[9.5vw] font-black uppercase tracking-tighter leading-[0.85] text-white">
+                    ARSLAN<br />
+                    <span class="text-zinc-700 italic hover:text-white transition-colors duration-700">KURBANOV</span>
                 </h1>
             </div>
-            
-            <div class="mt-16 flex flex-col items-center gap-12 w-full max-w-4xl animate-slideUp">
-                <h2 class="text-xl md:text-3xl font-medium uppercase tracking-tighter leading-relaxed text-zinc-300 max-w-2xl">
-                    Director of Photography <span class="text-zinc-800">/</span> Based in Earth
-                </h2>
+
+            <!-- Meta & Social Row -->
+            <div class="mt-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+                <p class="text-xs md:text-sm font-mono uppercase tracking-widest text-zinc-400 max-w-xl leading-relaxed">
+                    Visual Director & Cinematographer crafting motion archives, creative edits and high-end video productions.
+                </p>
+
+                <!-- Pill Action Row -->
+                <div class="flex items-center gap-2 flex-wrap">
+                    <a href="https://instagram.com/kkkrbnv" target="_blank" class="px-5 py-3 rounded-full bg-zinc-900 border border-zinc-800 text-[10px] font-mono uppercase tracking-widest hover:bg-white hover:text-black transition-all">Instagram ↗</a>
+                    <a href="https://vimeo.com/user259947321" target="_blank" class="px-5 py-3 rounded-full bg-white text-black text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-zinc-200 transition-all">Vimeo ↗</a>
+                    <a href="https://t.me/kkkrbnv" target="_blank" class="px-5 py-3 rounded-full bg-zinc-900 border border-zinc-800 text-[10px] font-mono uppercase tracking-widest hover:bg-white hover:text-black transition-all">Telegram ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK / MOTION VAULT (MOTIONSITES CARD GRID) -->
+        <section id="work" class="py-20 border-b border-zinc-900/80">
+            <div class="flex justify-between items-center mb-12">
+                <div class="flex items-center gap-3">
+                    <span class="text-xs font-mono text-zinc-500">//</span>
+                    <h2 class="text-2xl md:text-4xl font-black uppercase tracking-tight">FEATURED VAULT</h2>
+                </div>
+                <span class="text-[10px] font-mono text-zinc-600 uppercase tracking-widest hidden sm:inline">[ INTERACTIVE PREVIEWS ]</span>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {projects.map((p, idx) => {
+                    const isShowreel = p.title === "SHOWREEL";
+                    const isEdit = p.title === "CREATIVE EDIT";
+                    const targetLink = isShowreel ? "/showreels" : (isEdit ? "/creative-edits" : p.vimeoUrl || p.youtubeUrl);
+                    const isInternal = isShowreel || isEdit;
+
+                    return (
+                        <a 
+                            href={targetLink} 
+                            target={isInternal ? "_self" : "_blank"}
+                            class="group relative aspect-video overflow-hidden rounded-2xl bg-zinc-950 border border-zinc-900 hover:border-zinc-700 transition-all duration-500 block"
+                        >
+                            <!-- Video Background Loop -->
+                            <video 
+                                src={p.previewVideo} 
+                                class="w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out" 
+                                muted 
+                                loop 
+                                playsinline 
+                                autoplay
+                            ></video>
+
+                            <!-- Top Glassmorphism Badges -->
+                            <div class="absolute top-5 left-5 right-5 z-20 flex justify-between items-center pointer-events-none">
+                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[9px] font-mono text-zinc-300 uppercase tracking-widest">
+                                    0{idx + 1} / {p.category}
+                                </span>
+                                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[9px] font-mono text-white opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest">
+                                    {isInternal ? "Open Collection →" : "Watch External ↗"}
+                                </span>
+                            </div>
+
+                            <!-- Bottom Info Overlay -->
+                            <div class="absolute bottom-0 inset-x-0 z-20 p-6 md:p-8 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex justify-between items-end">
+                                <div>
+                                    <h3 class="text-2xl md:text-3xl font-black uppercase tracking-tight text-white group-hover:translate-x-1 transition-transform duration-300">
+                                        {p.title}
+                                    </h3>
+                                    <p class="text-[10px] font-mono text-zinc-400 mt-1 uppercase tracking-widest">
+                                        {isInternal ? "Interactive Motion Archive" : "Video Production"}
+                                    </p>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center font-bold text-xs group-hover:scale-110 transition-transform">
+                                    →
+                                </div>
+                            </div>
+                        </a>
+                    );
+                })}
+            </div>
+        </section>
+
+        <!-- PHOTOGRAPHY PORTAL (BENTO BANNER) -->
+        <section class="py-20 border-b border-zinc-900/80">
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center gap-3">
+                    <span class="text-xs font-mono text-zinc-500">//</span>
+                    <h2 class="text-2xl md:text-4xl font-black uppercase tracking-tight">STILLS EXHIBITION</h2>
+                </div>
+            </div>
+
+            <a href="/photography" class="group relative aspect-[21/9] md:aspect-[24/8] overflow-hidden rounded-2xl bg-zinc-950 border border-zinc-900 hover:border-zinc-700 transition-all duration-500 block">
+                <img 
+                    src="/photo1.jpg" 
+                    alt="Photography Archive" 
+                    class="w-full h-full object-cover opacity-30 group-hover:opacity-70 group-hover:scale-105 transition-all duration-1000 ease-out" 
+                />
                 
-                <!-- МАГНИТНЫЕ КНОПКИ -->
-                <div class="flex flex-row flex-nowrap gap-3 justify-center w-full md:w-auto">
-                    <a href="https://instagram.com/kkkrbnv" target="_blank" class="btn-2026 magnetic flex-1 md:flex-none">Instagram</a>
-                    <a href="https://vimeo.com/user259947321" target="_blank" class="btn-2026 bg-white !text-black magnetic flex-1 md:flex-none">Vimeo</a>
-                    <a href="https://t.me/kkkrbnv" target="_blank" class="btn-2026 magnetic flex-1 md:flex-none">Telegram</a>
+                <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-between bg-black/40 backdrop-blur-[1px]">
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[9px] font-mono text-white uppercase tracking-widest">
+                            STILLS / PHOTO VAULT
+                        </span>
+                        <span class="text-xs font-mono text-white underline group-hover:translate-x-1 transition-transform">
+                            ENTER EXHIBITION →
+                        </span>
+                    </div>
+
+                    <div>
+                        <h3 class="text-3xl md:text-6xl font-black uppercase tracking-tighter text-white">
+                            PHOTOGRAPHY ARCHIVE
+                        </h3>
+                        <p class="text-[10px] font-mono text-zinc-400 uppercase tracking-widest mt-2">
+                            Explore horizontal & vertical curations
+                        </p>
+                    </div>
                 </div>
-            </div>
-
-            <!-- ИНДИКАТОР СКРОЛЛА -->
-            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-20">
-                <div class="w-[1px] h-10 bg-white"></div>
-            </div>
-        </section>
-
-        <!-- VIDEO GRID -->
-        <section id="work" class="grid grid-cols-1 md:grid-cols-2 gap-8 py-28 border-t border-zinc-900/80">
-            {projects.map((p) => {
-                const isShowreel = p.title === "SHOWREEL";
-                const isEdit = p.title === "CREATIVE EDIT";
-                const link = isShowreel ? "/showreels" : (isEdit ? "/creative-edits" : p.vimeoUrl);
-                const target = (isShowreel || isEdit) ? "_self" : "_blank";
-
-                return (
-                    <a 
-                        href={link} 
-                        target={target} 
-                        class="group relative aspect-video overflow-hidden rounded-2xl bg-zinc-950 block border border-zinc-900/80 transition-all duration-700 hover:border-zinc-700"
-                    >
-                        <!-- Оверлей с высокой читаемостью -->
-                        <div class="absolute inset-0 z-20 flex flex-col justify-end p-8 md:p-12 bg-gradient-to-t from-black/90 via-black/20 to-transparent">
-                            <span class="text-[9px] font-bold uppercase tracking-[0.5em] text-zinc-400 mb-3">{p.category}</span>
-                            <h3 class="text-2xl md:text-4xl font-black uppercase tracking-tight pearl-hover transition-all duration-500">{p.title}</h3>
-                        </div>
-                        
-                        <video 
-                            src={p.previewVideo} 
-                            class="h-full w-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-1000 ease-out" 
-                            muted loop playsinline autoplay
-                        ></video>
-                    </a>
-                );
-            })}
-        </section>
-
-        <!-- PHOTOGRAPHY BLOCK -->
-        <section class="py-12 flex justify-center">
-            <a href="/photography" class="group relative w-full max-w-5xl aspect-[21/9] overflow-hidden rounded-3xl bg-zinc-950 block border border-zinc-900/80 transition-all duration-700 hover:border-zinc-700">
-                <div class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/50 group-hover:bg-black/20 transition-all duration-700 backdrop-blur-[2px]">
-                    <span class="text-[9px] font-bold uppercase tracking-[0.6em] text-zinc-400 mb-3">Stills & Archive</span>
-                    <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tight pearl-hover">Photography</h2>
-                </div>
-                <img src="/photo1.jpg" class="h-full w-full object-cover opacity-40 group-hover:opacity-80 group-hover:scale-[1.03] transition-all duration-1000 ease-out" />
             </a>
         </section>
 
-        <!-- CONTACT -->
-        <section id="contact" class="py-36 border-t border-zinc-900/80">
-            <div class="max-w-2xl mx-auto text-center md:text-left">
-                <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tight mb-4">Get in Touch</h2>
-                <p class="text-xs uppercase tracking-[0.4em] text-zinc-500 mb-16">Available for worldwide commercial & creative projects.</p>
-
-                <form action="https://formspree.io/f/xnjradqk" method="POST" class="space-y-10">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
-                        <input type="text" name="name" class="bg-transparent border-b border-zinc-800 py-4 outline-none text-lg focus:border-white transition-colors placeholder-zinc-700 font-medium" placeholder="Name" required />
-                        <input type="email" name="email" class="bg-transparent border-b border-zinc-800 py-4 outline-none text-lg focus:border-white transition-colors placeholder-zinc-700 font-medium" placeholder="Email" required />
+        <!-- CONTACT (MINIMALIST FORM) -->
+        <section id="contact" class="py-28">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                
+                <div class="md:col-span-5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-mono text-zinc-500 block mb-4">// INQUIRIES</span>
+                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6">START A<br />PROJECT</h2>
+                        <p class="text-xs font-mono uppercase tracking-widest text-zinc-500 leading-relaxed max-w-sm">
+                            Directing, cinematography and visual design inquiries worldwide.
+                        </p>
                     </div>
-                    <button type="submit" class="w-full md:w-auto bg-white text-black px-16 py-6 rounded-full text-[10px] font-black uppercase tracking-[0.4em] hover:bg-zinc-200 transition-all active:scale-95">Send Message</button>
-                </form>
+                    
+                    <div class="mt-12 space-y-2 text-xs font-mono text-zinc-400">
+                        <p>EMAIL: <a href="mailto:kkkrbnv@gmail.com" class="text-white underline">KKKRBNV@GMAIL.COM</a></p>
+                        <p>TELEGRAM: <a href="https://t.me/kkkrbnv" target="_blank" class="text-white underline">@KKKRBNV</a></p>
+                    </div>
+                </div>
+
+                <div class="md:col-span-7 bg-zinc-950 p-8 md:p-12 rounded-2xl border border-zinc-900">
+                    <form action="https://formspree.io/f/xnjradqk" method="POST" class="space-y-6">
+                        <div>
+                            <label class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block mb-2">NAME</label>
+                            <input 
+                                type="text" 
+                                name="name" 
+                                required 
+                                placeholder="Name or Company" 
+                                class="w-full bg-black/60 border border-zinc-800 rounded-xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-white transition-colors font-mono" 
+                            />
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block mb-2">EMAIL</label>
+                            <input 
+                                type="email" 
+                                name="email" 
+                                required 
+                                placeholder="email@address.com" 
+                                class="w-full bg-black/60 border border-zinc-800 rounded-xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-white transition-colors font-mono" 
+                            />
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block mb-2">BRIEF</label>
+                            <textarea 
+                                name="message" 
+                                rows="3" 
+                                placeholder="Project scope, timeline, budget..." 
+                                class="w-full bg-black/60 border border-zinc-800 rounded-xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-white transition-colors font-mono resize-none"
+                            ></textarea>
+                        </div>
+                        <button 
+                            type="submit" 
+                            class="w-full bg-white text-black font-black uppercase text-xs tracking-widest py-4 rounded-xl hover:bg-zinc-200 transition-all"
+                        >
+                            SEND INQUIRY →
+                        </button>
+                    </form>
+                </div>
+
             </div>
         </section>
+
     </main>
 
-    <footer class="p-12 text-[9px] font-bold text-zinc-700 uppercase tracking-[0.5em] text-center border-t border-zinc-900/50">
-        Arslan Kurbanov © All Rights Reserved
+    <!-- FOOTER -->
+    <footer class="border-t border-zinc-900 py-8 px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+        <span>© 2026 ARSLAN KURBANOV</span>
+        <span>MOTIONSITES UI ENGINE</span>
+        <a href="#top" class="hover:text-white transition-colors">TOP ↑</a>
     </footer>
 
-    <script is:inline>
-        // Прелоадер
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const loader = document.getElementById('loader');
-                if (loader) {
-                    loader.style.opacity = '0';
-                    setTimeout(() => loader.remove(), 700);
-                }
-            }, 800);
-        });
-
-        // Мягкий софтбокс за мышкой
-        const aura = document.getElementById('cursor-aura');
-        let mouseX = 0, mouseY = 0;
-        let auraX = 0, auraY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animateAura() {
-            auraX += (mouseX - auraX) * 0.08;
-            auraY += (mouseY - auraY) * 0.08;
-            if (aura) {
-                aura.style.transform = `translate(${auraX - 200}px, ${auraY - 200}px)`;
-            }
-            requestAnimationFrame(animateAura);
-        }
-        animateAura();
-
-        // Магнитные кнопки
-        const magnetics = document.querySelectorAll('.magnetic');
-        magnetics.forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
-            });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = `translate(0, 0)`;
-            });
-        });
-    </script>
-
-    <style is:global>
-        :root { color-scheme: dark; }
-        html { scroll-behavior: smooth; background: #000; }
-
-        /* Мягкий софтбокс */
-        .aura {
-            position: fixed; top: 0; left: 0; width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%; pointer-events: none; z-index: 1;
-            filter: blur(50px); will-change: transform;
-        }
-
-        .btn-2026 { @apply border border-zinc-800 py-5 px-8 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center; }
-
-        /* Идеально чистый перламутр */
-        .pearl-text { 
-            display: inline-block; 
-            background: linear-gradient(to right, #444 10%, #aaa 40%, #fff 50%, #aaa 60%, #444 90%); 
-            background-size: 200% auto; 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            animation: shine 10s linear infinite; 
-            padding-right: 0.1em;
-        }
-
-        .pearl-hover { 
-            background: linear-gradient(45deg, #fff, #888, #fff); 
-            background-size: 200% auto; 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            animation: shine 2s linear infinite; 
-        }
-
-        @keyframes shine { to { background-position: 200% center; } }
-        
-        /* Animations */
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .animate-fadeIn { animation: fadeIn 0.8s ease forwards; }
-
-        @keyframes reveal { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .animate-reveal { animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .animate-slideUp { opacity: 0; animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards; }
-
-        @keyframes scaleUp { from { transform: scale(0.98); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .animate-scaleUp { opacity: 0; animation: scaleUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
-
-        ::-webkit-scrollbar { display: none; }
-    </style>
 </body>
 </html>
