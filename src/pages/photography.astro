@@ -1,47 +1,52 @@
 ---
 import seriesData from '../data/photos.json';
 ---
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Photography — Arslan Kurbanov</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <title>PHOTOGRAPHY — ARSLAN KURBANOV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="/favicon.png" />
 </head>
-<body class="bg-[#000] text-[#fff] font-['Inter',sans-serif] selection:bg-white selection:text-black overflow-x-hidden">
-    
-    <!-- NAVIGATION -->
-    <nav class="fixed top-0 z-50 flex w-full justify-between p-6 md:p-10 mix-blend-difference items-center">
-        <a href="/" class="text-[10px] uppercase tracking-[0.4em] font-black border border-white/20 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all">← Back</a>
-        <span class="text-xl font-black italic tracking-tighter uppercase leading-none italic opacity-40">AK Archive</span>
-    </nav>
+<body class="bg-[#050505] text-[#EFEFEF] font-['Inter',sans-serif] selection:bg-white selection:text-black antialiased overflow-x-hidden border-t-2 border-white">
+
+    <!-- AURA SPOTLIGHT -->
+    <div id="aura" class="aura-spotlight"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#050505]/80 backdrop-blur-xl border-b border-zinc-900 px-6 md:px-12 py-4 flex justify-between items-center text-xs font-mono uppercase tracking-widest">
+        <a href="/" class="text-white border border-zinc-800 px-5 py-2 rounded-full hover:bg-white hover:text-black transition-all font-bold">
+            ← RETURN TO ARCHIVE
+        </a>
+        <span class="text-zinc-500 hidden md:inline">[ 03 / STILLS EXHIBITION ]</span>
+        <span class="font-black text-white tracking-tighter">AK®</span>
+    </header>
 
     <main class="w-full pt-32 pb-40">
         {seriesData.map((series, sIndex) => (
-            <div class="mb-40 md:mb-64">
+            <div class="mb-40 md:mb-64 border-b border-zinc-900/60 pb-20">
                 <!-- SERIES HEADER -->
-                <header class="px-6 md:px-20 mb-20 md:mb-32 overflow-visible">
-                    <span class="text-[9px] uppercase tracking-[0.8em] text-zinc-600 block mb-4">{series.location}{'\u00A0'}</span>
-                    <h2 class="text-[clamp(3rem,10vw,11rem)] font-black uppercase italic tracking-tighter pearl-text leading-[0.8] pr-20 overflow-visible">
+                <header class="px-6 md:px-20 mb-16 overflow-visible">
+                    <span class="text-[10px] font-mono uppercase tracking-[0.6em] text-zinc-500 block mb-3">SERIES 0{sIndex + 1} // {series.location}{'\u00A0'}</span>
+                    <h2 class="text-[clamp(3rem,9vw,10rem)] font-black uppercase italic tracking-tighter pearl-text leading-[0.82] pr-20 overflow-visible">
                         {series.seriesTitle}{'\u00A0'}
                     </h2>
                 </header>
 
-                <!-- PHOTOS VERTICAL FEED -->
-                <div class="flex flex-col items-center gap-32 md:gap-52">
+                <!-- VERTICAL FEED -->
+                <div class="flex flex-col items-center gap-28 md:gap-40">
                     {series.photos.map((photo, pIndex) => (
-                        <div class="w-full px-4 flex justify-center" style="content-visibility: auto; contain-intrinsic-size: 1px 800px;">
-                            <div class="relative group cursor-zoom-in" onclick={`openGallery(${sIndex}, ${pIndex})`}>
-                                <!-- БАЗОВЫЙ МАСШТАБ 87vh -->
+                        <div class="w-full px-4 flex justify-center reveal-on-scroll" style="content-visibility: auto; contain-intrinsic-size: 1px 800px;">
+                            <div class="relative group cursor-zoom-in border border-zinc-900/80 p-2 bg-zinc-950/40 hover:border-zinc-700 transition-colors" onclick={`openGallery(${sIndex}, ${pIndex})`}>
                                 <img 
                                     src={photo.src} 
-                                    class="max-h-[87vh] w-auto object-contain shadow-2xl transition-all duration-1000 group-hover:scale-[1.01]" 
+                                    class="max-h-[85vh] w-auto object-contain shadow-2xl transition-all duration-700 group-hover:scale-[1.01]" 
                                     loading="lazy" 
                                 />
                                 {photo.description && (
-                                    <div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all bg-black/50 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-full">
-                                        <p class="text-[9px] uppercase tracking-[0.3em] text-zinc-200 font-medium italic">{photo.description}{'\u00A0'}</p>
+                                    <div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 backdrop-blur-md border border-zinc-800 px-4 py-2 font-mono text-[9px] uppercase tracking-widest text-zinc-300">
+                                        {photo.description}{'\u00A0'}
                                     </div>
                                 )}
                             </div>
@@ -52,42 +57,43 @@ import seriesData from '../data/photos.json';
         ))}
     </main>
 
-    <!-- FULLSCREEN MODAL 87vh -->
-    <div id="gallery-modal" class="fixed inset-0 z-[100] bg-black/98 backdrop-blur-3xl hidden flex-col items-center justify-center p-0 cursor-pointer" onclick="closeGallery()">
-        
-        <button class="absolute top-8 right-8 z-[110] text-white opacity-20 hover:opacity-100 text-[10px] uppercase tracking-widest transition-all p-4">Close ×</button>
+    <!-- FULLSCREEN ADVANCED GALLERY MODAL -->
+    <div id="gallery-modal" class="fixed inset-0 z-[100] bg-black/98 backdrop-blur-3xl hidden flex-col items-center justify-between py-10 cursor-pointer" onclick="closeGallery()">
+        <button class="absolute top-8 right-8 z-[110] text-white/50 hover:text-white font-mono text-xs uppercase tracking-widest p-4">CLOSE ×</button>
 
-        <!-- Main Display Area -->
-        <div class="relative w-full h-full flex flex-col items-center justify-center pointer-events-none">
-            <div class="relative max-h-[87vh] flex items-center justify-center pointer-events-auto" onclick="event.stopPropagation()">
-                
-                <!-- The Big Photo (87vh) -->
-                <img id="modal-img" src="" class="max-h-[87vh] max-w-[95vw] object-contain shadow-2xl transition-all duration-500 scale-95 cursor-default" />
-                
-                <!-- Navigation Arrows -->
-                <button onclick="prevPhoto()" class="absolute -left-16 md:-left-24 top-1/2 -translate-y-1/2 p-6 hidden md:block opacity-10 hover:opacity-100 transition-all text-4xl font-thin text-white">←</button>
-                <button onclick="nextPhoto()" class="absolute -right-16 md:-right-24 top-1/2 -translate-y-1/2 p-6 hidden md:block opacity-10 hover:opacity-100 transition-all text-4xl font-thin text-white">→</button>
-            </div>
-            
-            <!-- Floating Description -->
-            <div class="absolute bottom-16 md:bottom-20 left-0 w-full text-center pointer-events-none">
-                <p id="modal-desc" class="text-[10px] uppercase tracking-[0.4em] text-white/40 italic px-10 overflow-visible"></p>
+        <div class="relative flex-1 w-full flex items-center justify-center px-4 md:px-20">
+            <div class="relative max-h-[85vh] flex items-center justify-center pointer-events-auto" onclick="event.stopPropagation()">
+                <img id="modal-img" src="" class="max-h-[85vh] max-w-[90vw] object-contain shadow-2xl transition-all duration-500 scale-95 cursor-default" />
+                <button onclick="prevPhoto()" class="absolute -left-20 top-1/2 -translate-y-1/2 p-6 hidden md:block opacity-30 hover:opacity-100 transition-all font-mono text-3xl">←</button>
+                <button onclick="nextPhoto()" class="absolute -right-20 top-1/2 -translate-y-1/2 p-6 hidden md:block opacity-30 hover:opacity-100 transition-all font-mono text-3xl">→</button>
             </div>
         </div>
 
-        <!-- THUMBNAILS (Always visible at the very bottom) -->
-        <div id="thumb-track" class="absolute bottom-6 flex gap-2 px-10 overflow-x-auto max-w-full pointer-events-auto no-scrollbar" onclick="event.stopPropagation()">
-            <!-- JS Content -->
+        <div class="w-full flex flex-col items-center gap-6 pb-4 pointer-events-none font-mono uppercase tracking-widest">
+            <p id="modal-desc" class="text-[10px] text-zinc-400 italic pointer-events-auto px-10 text-center"></p>
+            <div id="thumb-track" class="flex gap-2 px-10 overflow-x-auto max-w-full pointer-events-auto no-scrollbar"></div>
         </div>
     </div>
 
+    <footer class="border-t border-zinc-900 py-8 px-6 md:px-12 flex justify-between items-center text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+        <span>[ © 2026 ARSLAN KURBANOV ]</span>
+        <a href="#top" class="hover:text-white transition-colors">TOP ↑</a>
+    </footer>
+
     <script is:inline define:vars={{ seriesData }}>
-        let currentS = 0;
-        let currentP = 0;
+        let currentS = 0, currentP = 0;
+        const aura = document.getElementById('aura');
+        let mouseX = 0, mouseY = 0, auraX = 0, auraY = 0;
+        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+        function animateAura() {
+            auraX += (mouseX - auraX) * 0.08; auraY += (mouseY - auraY) * 0.08;
+            if (aura) aura.style.transform = `translate(${auraX - 250}px, ${auraY - 250}px)`;
+            requestAnimationFrame(animateAura);
+        }
+        animateAura();
 
         window.openGallery = function(sIdx, pIdx) {
-            currentS = sIdx;
-            currentP = pIdx;
+            currentS = sIdx; currentP = pIdx;
             updateModal();
             document.getElementById('gallery-modal').classList.remove('hidden');
             document.getElementById('gallery-modal').classList.add('flex');
@@ -132,46 +138,45 @@ import seriesData from '../data/photos.json';
             if (photos.length <= 1) { track.innerHTML = ''; return; }
             
             track.innerHTML = photos.map((p, i) => `
-                <div onclick="window.setPhoto(${i})" class="w-8 h-12 flex-none cursor-pointer overflow-hidden rounded-sm transition-all border ${i === currentP ? 'border-white opacity-100 scale-110 shadow-lg' : 'border-transparent opacity-20 hover:opacity-50'}">
+                <div onclick="window.setPhoto(${i})" class="w-10 h-14 md:w-12 md:h-16 flex-none cursor-pointer overflow-hidden rounded-none transition-all border ${i === currentP ? 'border-white opacity-100 scale-105' : 'border-zinc-800 opacity-30 hover:opacity-70'}">
                     <img src="${p.src}" class="w-full h-full object-cover" />
                 </div>
             `).join('');
         }
 
-        window.setPhoto = function(i) {
-            currentP = i;
-            updateModal();
-        }
+        window.setPhoto = function(i) { currentP = i; updateModal(); }
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeGallery();
             if (e.key === 'ArrowRight') nextPhoto();
             if (e.key === 'ArrowLeft') prevPhoto();
         });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
     </script>
 
     <style is:global>
-        html { scroll-behavior: smooth; background: #000; }
-        
+        :root { color-scheme: dark; }
+        html { background: #050505; }
+        .aura-spotlight {
+            position: fixed; top: 0; left: 0; width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%; pointer-events: none; z-index: 1; filter: blur(60px);
+        }
         .pearl-text { 
-            display: inline-block;
-            background: linear-gradient(to right, #333 20%, #888 40%, #fff 50%, #888 60%, #333 80%); 
-            background-size: 200% auto; 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            animation: shine 12s linear infinite; 
-            padding-right: 0.25em; 
+            display: inline-block; 
+            background: linear-gradient(to right, #444 10%, #aaa 40%, #fff 50%, #aaa 60%, #444 90%); 
+            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+            animation: shine 10s linear infinite; padding-right: 0.15em;
         }
         @keyframes shine { to { background-position: 200% center; } }
-        
-        ::-webkit-scrollbar { width: 3px; }
-        ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
+        .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
+        ::-webkit-scrollbar { display: none; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        
-        #thumb-track {
-            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-        }
     </style>
 </body>
 </html>
