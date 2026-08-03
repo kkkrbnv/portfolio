@@ -59,11 +59,10 @@ import projects from '../data/projects.json';
                 <span id="live-time">EARTH / 00:00</span>
             </div>
 
-            <!-- Monumental Headline with 3D Mouse Parallax -->
+            <!-- Monumental Headline with Silver Pearl Effect -->
             <div class="my-12 perspective-container">
                 <h1 id="hero-title" class="text-[13vw] md:text-[11vw] font-black uppercase tracking-tighter leading-[0.82] transition-transform duration-200 ease-out">
-                    <!-- ГРЯЗНЫЙ СЕРЕБРЯНО-РОЗОВЫЙ ПЕРЛАМУТР ДЛЯ ARSLAN -->
-                    <span class="dirty-pink-pearl block pr-8 overflow-visible">ARSLAN</span>
+                    <span class="pearl-text block pr-8 overflow-visible">ARSLAN</span>
                     <span class="pearl-text italic font-black block pr-8 overflow-visible">KURBANOV</span>
                 </h1>
             </div>
@@ -180,7 +179,7 @@ import projects from '../data/projects.json';
 
             <a href="/photography" class="motion-card group relative block aspect-[21/9] md:aspect-[24/7] overflow-hidden rounded-none bg-zinc-950 border border-zinc-900 hover:border-white transition-colors duration-500">
                 <img 
-                    ="/photo1.jpg" 
+                    src="/photography/Fashion.jpg" 
                     alt="Photography Archive" 
                     class="w-full h-full object-cover opacity-30 group-hover:opacity-75 group-hover:scale-105 transition-all duration-1000 ease-out" 
                 />
@@ -326,7 +325,7 @@ import projects from '../data/projects.json';
             heroTitle.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
         });
 
-        // --- 4. СКРОЛЛ-ИНЕРЦИЯ (TILT БЕЗ ОБРЕЗАНИЯ) ---
+        // --- 4. СКРОЛЛ-ИНЕРЦИЯ ---
         let currentScroll = window.pageYOffset;
         const cards = document.querySelectorAll('.motion-card');
 
@@ -385,12 +384,10 @@ import projects from '../data/projects.json';
         :root { color-scheme: dark; }
         html { scroll-behavior: smooth; background: #080808; }
 
-        /* Контейнер для 3D наклона */
         .perspective-container {
             perspective: 1000px;
         }
 
-        /* Софтбокс под курсором */
         .aura-spotlight {
             position: fixed; top: 0; left: 0; width: 500px; height: 500px;
             background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%);
@@ -398,25 +395,7 @@ import projects from '../data/projects.json';
             filter: blur(60px); will-change: transform;
         }
 
-        /* ГРЯЗНЫЙ СЕРЕБРЯНО-РОЗОВЫЙ ПЕРЛАМУТР (DIRTY PINK PEARL) ДЛЯ ARSLAN */
-        .dirty-pink-pearl {
-            display: inline-block;
-            background: linear-gradient(
-                to right,
-                #382b32 10%,
-                #7a5e6b 30%,
-                #edd3de 50%,
-                #856876 70%,
-                #382b32 90%
-            );
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 10s linear infinite;
-            padding-right: 0.15em;
-        }
-
-        /* КЛАССИЧЕСКИЙ СЕРЕБРЯНЫЙ ПЕРЛАМУТР ДЛЯ KURBANOV */
+        /* КЛАССИЧЕСКИЙ СЕРЕБРЯНЫЙ ПЕРЛАМУТР ДЛЯ ОБОИХ СЛОВ */
         .pearl-text { 
             display: inline-block; 
             background: linear-gradient(to right, #444 10%, #aaa 40%, #fff 50%, #aaa 60%, #444 90%); 
@@ -437,7 +416,6 @@ import projects from '../data/projects.json';
 
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* Появление блоков при скролле */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(40px);
