@@ -1,9 +1,16 @@
 [
   {
-    "seriesTitle": "OCEAN VIBES",
+    "seriesTitle": "OCEAN",
     "location": "35mm Archive",
     "photos": [
       { "src": "/photography/Photo1.jpg", "description": "Surfer. Shot on 35mm." }
+    ]
+  },
+   {
+    "seriesTitle": "Tokyo Fashion",
+    "location": "Tokyo / Japn",
+    "photos": [
+      { "src": "/photography/Tokyo-FW.png", "description": "Comercial Shoot ." }
     ]
   },
   {
@@ -11,6 +18,22 @@
     "location": "Milan Italy",
     "photos": [
       { "src": "/photography/Milan-FW.png", "description": "Comercial Shoot ." }
+    ]
+  },
+  {
+    "seriesTitle": "Fashion Brand Promo",
+    "location": "Portofino",
+    "photos": [
+      { "src": "/photography/RL-promo1.jpg", "description": "Liguria." },
+      { "src": "/photography/RL_promo2.jpg", "description": "Liguria." },
+      { "src": "/photography/RL-promo3.jpg", "description": "Liguria." }
+    ]
+  },
+   {
+    "seriesTitle": "Saint Laurent",
+    "location": "Milan Italy",
+    "photos": [
+      { "src": "/photography/YSL.jpg", "description": "Comercial." }
     ]
   },
   {
