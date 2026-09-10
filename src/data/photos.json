@@ -6,6 +6,13 @@
       { "src": "/photography/Photo1.jpg", "description": "Surfer. Shot on 35mm." }
     ]
   },
+   {
+    "seriesTitle": "Milan Fashion Week ",
+    "location": "Milan Italy",
+    "photos": [
+      { "src": "/Milan-FW.png", "description": "Comercial Shoot ." },
+    ]
+  },
   {
     "seriesTitle": "BALI ",
     "location": "Indonesia",
