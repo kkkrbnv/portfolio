@@ -1,10 +1,17 @@
 [
   {
-    "title": "Monza",
+    "title": "Monza F1",
     "category": "Vlog",
     "youtubeId": "HAm14zKgWZw",
     "previewVideo": "/Monza01.mp4",
     "description": "F1 Monza GP vlog."
+  },
+  {
+    "title": "Fashion Week",
+    "category": "Comercial",
+    "youtubeId": "d9MaCjNSSXk&t",
+    "previewVideo": "/FW MSK.mp4",
+    "description": "Moscow Fashion Week"
   },
   {
     "title": "Portofino",
